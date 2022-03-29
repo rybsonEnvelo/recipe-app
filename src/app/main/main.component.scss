@@ -1,0 +1,6 @@
+@use "../../sass/variables.scss" as *;
+
+:host {
+  background-color: $color-backgorund--dark;
+  display: flex;
+}
