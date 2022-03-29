@@ -1,6 +1,10 @@
 @forward "sass/reset.scss";
 @use "sass/variables.scss" as *;
 
+:focus {
+  outline: solid 2px $color-green;
+}
+
 body {
   width: 100vw;
   height: 100vh;
