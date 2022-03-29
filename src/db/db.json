@@ -12,15 +12,18 @@
       "ingredients": [
         {
           "name": "makaron",
-          "value": "250g"
+          "value": "250",
+          "type": "gram"
         },
         {
           "name": "sól",
-          "value": "szczypta"
+          "value": "1",
+          "type": "szczypta"
         },
         {
           "name": "twaróg",
-          "value": "150g"
+          "value": "150",
+          "type": "gram"
         }
       ],
       "rating": 4
@@ -36,11 +39,13 @@
       "ingredients": [
         {
           "name": "jajka",
-          "value": "3 szt."
+          "value": "3",
+          "type": "sztuki"
         },
         {
           "name": "masło",
-          "value": "łyżeczka"
+          "value": "1",
+          "type": "łyżeczka"
         }
       ],
       "rating": 5

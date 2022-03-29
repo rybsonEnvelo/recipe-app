@@ -6,7 +6,7 @@ import { Recipe } from '../interfaces/Recipe';
   providedIn: 'root',
 })
 export class RecipeApiService {
-  private API_URL: string = 'http://localhost:3000/';
+  private API_URL: string = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient) {}
 

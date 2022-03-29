@@ -8,3 +8,7 @@
     <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
   </select>
 </div>
+
+<div class="recipe-list-container">
+  <app-recipe-tile *ngFor="let recipe of recipes$ | async"></app-recipe-tile>
+</div>
