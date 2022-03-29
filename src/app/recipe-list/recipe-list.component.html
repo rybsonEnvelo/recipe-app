@@ -5,6 +5,6 @@
   </div>
 
   <select>
-    <option value="">asdasdasasd</option>
+    <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
   </select>
 </div>
