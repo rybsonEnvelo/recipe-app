@@ -9,6 +9,7 @@ import { RecipeTileComponent } from './recipe-tile/recipe-tile.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { RecipeDescriptionComponent } from './recipe-description/recipe-description.component';
 import { MainComponent } from './main/main.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,10 @@ import { MainComponent } from './main/main.component';
     RecipeTileComponent,
     RecipeFormComponent,
     RecipeDescriptionComponent,
-    MainComponent
+    MainComponent,
   ],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot()
-  ],
+  imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
