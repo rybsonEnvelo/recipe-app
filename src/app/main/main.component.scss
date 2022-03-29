@@ -3,4 +3,8 @@
 :host {
   background-color: $color-backgorund--dark;
   display: flex;
+
+  & > * {
+    flex: 1;
+  }
 }
