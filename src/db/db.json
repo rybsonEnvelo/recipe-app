@@ -137,6 +137,144 @@
         }
       ],
       "rating": 5
+    },
+    {
+      "id": 1,
+      "name": "kluski z twarogiem",
+      "description": [
+        "Przygotowujemy garnek wody i solimy go",
+        "Gotujemy wodę",
+        "Gotujemy makaron",
+        "Do ugatowanego makaronu dodajemy twaróg"
+      ],
+      "ingredients": [
+        {
+          "name": "makaron",
+          "value": "250",
+          "type": "gram"
+        },
+        {
+          "name": "sól",
+          "value": "1",
+          "type": "szczypta"
+        },
+        {
+          "name": "twaróg",
+          "value": "150",
+          "type": "gram"
+        }
+      ],
+      "rating": 4
+    },
+    {
+      "id": 2,
+      "name": "jajecznica",
+      "description": [
+        "Rozpuszczamy masło na patelni",
+        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
+        "Mieszamy rozbite jajka i czekamy na jajecznice"
+      ],
+      "ingredients": [
+        {
+          "name": "jajka",
+          "value": "3",
+          "type": "sztuki"
+        },
+        {
+          "name": "masło",
+          "value": "1",
+          "type": "łyżeczka"
+        }
+      ],
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "jajecznica",
+      "description": [
+        "Rozpuszczamy masło na patelni",
+        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
+        "Mieszamy rozbite jajka i czekamy na jajecznice"
+      ],
+      "ingredients": [
+        {
+          "name": "jajka",
+          "value": "3",
+          "type": "sztuki"
+        },
+        {
+          "name": "masło",
+          "value": "1",
+          "type": "łyżeczka"
+        }
+      ],
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "jajecznica",
+      "description": [
+        "Rozpuszczamy masło na patelni",
+        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
+        "Mieszamy rozbite jajka i czekamy na jajecznice"
+      ],
+      "ingredients": [
+        {
+          "name": "jajka",
+          "value": "3",
+          "type": "sztuki"
+        },
+        {
+          "name": "masło",
+          "value": "1",
+          "type": "łyżeczka"
+        }
+      ],
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "jajecznica",
+      "description": [
+        "Rozpuszczamy masło na patelni",
+        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
+        "Mieszamy rozbite jajka i czekamy na jajecznice"
+      ],
+      "ingredients": [
+        {
+          "name": "jajka",
+          "value": "3",
+          "type": "sztuki"
+        },
+        {
+          "name": "masło",
+          "value": "1",
+          "type": "łyżeczka"
+        }
+      ],
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "jajecznica",
+      "description": [
+        "Rozpuszczamy masło na patelni",
+        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
+        "Mieszamy rozbite jajka i czekamy na jajecznice"
+      ],
+      "ingredients": [
+        {
+          "name": "jajka",
+          "value": "3",
+          "type": "sztuki"
+        },
+        {
+          "name": "masło",
+          "value": "1",
+          "type": "łyżeczka"
+        }
+      ],
+      "rating": 5
     }
   ],
   "users": []

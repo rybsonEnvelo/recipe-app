@@ -2,16 +2,19 @@
 
 :host {
   background-color: $color-background--light;
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .filter-container {
   display: flex;
   gap: 1.5rem;
   margin-left: auto;
+  padding-right: 0.5rem;
 
   .input-container {
     position: relative;
@@ -37,4 +40,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+  max-height: 100%;
+  padding-right: 0.5rem;
+  overflow-y: auto;
 }
