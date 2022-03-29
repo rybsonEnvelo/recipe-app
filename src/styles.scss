@@ -1,2 +1,18 @@
-@use "sass/reset.scss";
-@use "sass/variables.scss";
+@forward "sass/reset.scss";
+@use "sass/variables.scss" as *;
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+h1,
+h2,
+h3,
+p {
+  color: $color-text--dark;
+}
+
+ion-icon {
+  color: $color-text--dark;
+}
