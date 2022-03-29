@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../interfaces/Recipe';
+import { ShareService } from '../shared/share.service';
 
 @Component({
   selector: 'app-recipe-tile',
@@ -9,7 +10,11 @@ import { Recipe } from '../interfaces/Recipe';
 export class RecipeTileComponent implements OnInit {
   @Input() recipe!: Recipe;
 
-  constructor() {}
+  constructor(private shareService: ShareService) {}
 
   ngOnInit(): void {}
+
+  displayDetails() {
+    this.shareService.emitRecipe(this.recipe);
+  }
 }

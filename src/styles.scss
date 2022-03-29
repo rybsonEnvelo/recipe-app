@@ -1,6 +1,10 @@
 @forward "sass/reset.scss";
 @use "sass/variables.scss" as *;
 
+:focus {
+  outline: solid 2px $color-green;
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -15,4 +19,14 @@ p {
 
 ion-icon {
   color: $color-text--dark;
+}
+
+ion-icon[name="star"] {
+  margin-top: 0.6rem;
+  margin: 0.6rem 0.5rem 0 0;
+  color: $color-orange;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 }

@@ -5,9 +5,30 @@
   display: flex;
   align-items: flex-start;
   padding: 2rem 2rem;
-  gap: 2rem;
+  gap: 2.5rem;
+  max-width: 100%;
+  overflow: hidden;
 
   & > * {
     flex: 1;
+  }
+}
+
+.container {
+  background-color: $color-background--light;
+  padding: 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-height: 100%;
+
+  .buttons-container {
+    display: flex;
+    gap: 0.5rem;
+    min-height: 3.5rem;
+
+    button {
+      flex: 1;
+    }
   }
 }

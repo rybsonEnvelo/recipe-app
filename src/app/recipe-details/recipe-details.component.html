@@ -1,0 +1,24 @@
+<ng-container *ngIf="recipe$ | async as recipe">
+  <section class="container">
+    <h2>{{ recipe.name | firstLetterUpperCase }}</h2>
+    <div class="stars">
+      <ion-icon *ngFor="let star of recipe.rating | multiplyStars" name="star"></ion-icon>
+    </div>
+
+    <div class="description">
+      <h3>Jak przyżądzić</h3>
+      <ol class="description__list">
+        <li *ngFor="let detail of recipe.description">{{ detail }}</li>
+      </ol>
+    </div>
+
+    <div class="ingredients">
+      <h3>Składniki</h3>
+      <ol class="ingredients-list">
+        <li *ngFor="let ingredient of recipe.ingredients">
+          {{ ingredient.name }} - {{ ingredient.value }} {{ ingredient.type }}
+        </li>
+      </ol>
+    </div>
+  </section>
+</ng-container>
