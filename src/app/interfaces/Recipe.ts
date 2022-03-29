@@ -3,7 +3,7 @@ import { Ingredient } from './Ingredient';
 export interface Recipe {
   id: number;
   name: string;
-  details: string[];
+  description: string[];
   ingredients: Ingredient[];
   rating: number;
 }

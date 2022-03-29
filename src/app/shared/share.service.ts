@@ -11,6 +11,7 @@ export class ShareService {
   constructor() {}
 
   emitRecipe(recipe: Recipe) {
+    console.log(recipe);
     return this.recipeSubject.next(recipe);
   }
 

@@ -12,7 +12,7 @@ import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FirstLetterUpperCasePipe } from './shared/first-letter-upper-case.pipe';
 import { MultiplyStarsPipe } from './shared/multiply-stars.pipe';
-import { RecipeDetailsComponent } from './recipe-description/recipe-details.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
 @NgModule({
   declarations: [
