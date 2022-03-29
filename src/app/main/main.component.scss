@@ -1,8 +1,11 @@
 @use "../../sass/variables.scss" as *;
 
 :host {
-  background-color: $color-backgorund--dark;
+  background-color: $color-background--dark;
   display: flex;
+  align-items: flex-start;
+  padding: 2rem 2rem;
+  gap: 2rem;
 
   & > * {
     flex: 1;

@@ -1,2 +1,46 @@
+@use "../../sass/variables.scss" as *;
+
 :host {
+  background-color: $color-background--light;
+  padding: 2rem 2rem 2rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.filter-container {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: auto;
+  padding-right: 0.5rem;
+
+  .input-container {
+    position: relative;
+
+    input {
+      padding: 0.7rem 1rem 0.7rem 3.5rem;
+    }
+
+    ion-icon {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      transform: translateY(50%);
+    }
+  }
+
+  select {
+    padding-left: 1rem;
+  }
+}
+
+.recipe-list-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-height: 100%;
+  padding-right: 0.5rem;
+  overflow-y: auto;
 }
