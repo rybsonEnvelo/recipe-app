@@ -28,11 +28,14 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -86,22 +89,28 @@
             "browserTarget": "recipe-app:build"
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+            "cordovaBuildTarget": "recipe-app:ionic-cordova-build",
+            "devServerTarget": "recipe-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "recipe-app:ionic-cordova-build:production",
+              "devServerTarget": "recipe-app:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "recipe-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "recipe-app:build:production"
+            }
           }
         }
       }
