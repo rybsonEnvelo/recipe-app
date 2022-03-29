@@ -14,11 +14,11 @@
 
     <div class="ingredients">
       <h3>Składniki</h3>
-      <ol class="ingredients-list">
+      <ul class="ingredients-list">
         <li *ngFor="let ingredient of recipe.ingredients">
           {{ ingredient.name }} - {{ ingredient.value }} {{ ingredient.type }}
         </li>
-      </ol>
+      </ul>
     </div>
   </section>
 </ng-container>

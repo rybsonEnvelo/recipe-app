@@ -2,6 +2,112 @@
   "recipes": [
     {
       "id": 1,
+      "name": "placki czekoladowe",
+      "description": [
+        "Jogurt i jajka wyjąć wcześniej z lodówki aby się ogrzały (lub delikatnie podgrzać w kąpieli lub mikrofali).",
+        "Wymieszać jogurt z jajkami, cukrem wanilinowym i cukrem za pomocą rózgi lub widelcem.",
+        "Do drugiej miski przesiać mąkę z kakao, proszkiem do pieczenia i sodą, dokładnie wymieszać.",
+        "Do suchych składników dodać mokre składniki i wymieszać rózgą lub delikatnie oraz krótko zmiksować do połączenia się składników na jednolitą masę (nie można mieszać za długo, tylko do pierwszego połączenia się składników).",
+        "Rozgrzać patelnię (np. dużą naleśnikową lub inną z nieprzywierającą powłoką), posmarować ją masłem lub olejem i nakładać po 2 płaskie łyżki stołowe ciasta na jednego placka zachowując odstępy (maksymalnie 4 placki jednocześnie).",
+        "Smażyć na niezbyt dużym ogniu, do czasu aż urosną i będą ładnie zrumienione (około 3 minuty). Przewrócić placki na drugą stronę i smażyć do zrumienienia, przez około 3 minuty na umiarkowanym ogniu.",
+        "Posypać cukrem pudrem, podawać np. z syropem klonowym lub dżemem, owocami."
+      ],
+      "ingredients": [
+        {
+          "name": "jogurt naturalny",
+          "value": "250",
+          "type": "gram"
+        },
+        {
+          "name": "jajko",
+          "value": "2",
+          "type": "sztuki"
+        },
+        {
+          "name": "cukier wanilinowy",
+          "value": "1",
+          "type": "opakowanie"
+        },
+        {
+          "name": "cukier",
+          "value": "1",
+          "type": "łyżka"
+        },
+        {
+          "name": "mąka przenna",
+          "value": "170",
+          "type": "gram"
+        },
+        {
+          "name": "kakao",
+          "value": "1",
+          "type": "łyżka"
+        },
+        {
+          "name": "proszek do pieczenia",
+          "value": "1.5",
+          "type": "łyżeczka"
+        },
+        {
+          "name": "soda oczyszczona",
+          "value": "0.5",
+          "type": "łyżeczka"
+        }
+      ],
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "jajecznica",
+      "description": [
+        "Rozpuszczamy masło na patelni",
+        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
+        "Mieszamy rozbite jajka i czekamy na jajecznice"
+      ],
+      "ingredients": [
+        {
+          "name": "jajka",
+          "value": "3",
+          "type": "sztuki"
+        },
+        {
+          "name": "masło",
+          "value": "1",
+          "type": "łyżeczka"
+        }
+      ],
+      "rating": 3
+    },
+    {
+      "id": 3,
+      "name": "zapiekanki",
+      "description": [
+        "Przygotować sos pomidorowy: w garnku na oliwie delikatnie podsmażyć starty czosnek, dodać passatę pomidorową, oregano i kilka listków bazylii. Doprawić solą i pieprzem, zagotować i po chwili zdjąć z ognia.",
+        "Bagietkę przekroić i skropić oliwą extra vergine, posmarować sosem pomidorowym.",
+        "Układać naprzemiennie kawałki poszarpanej mozzarelli i szynki, posypać pozostałymi listkami bazylii.",
+        "Ułożyć na blaszce do pieczenia i wstawić do nagrzanego do 200 st. C piekarnika. Piec do zrumienienia przez ok. 7 minut."
+      ],
+      "ingredients": [
+        {
+          "name": "bagietka",
+          "value": "1",
+          "type": "sztuki"
+        },
+        {
+          "name": "mozarella",
+          "value": "2",
+          "type": "sztuki"
+        },
+        {
+          "name": "szynka",
+          "value": "6",
+          "type": "plasterki"
+        }
+      ],
+      "rating": 2
+    },
+    {
+      "id": 4,
       "name": "kluski z twarogiem",
       "description": [
         "Przygotowujemy garnek wody i solimy go",
@@ -27,269 +133,6 @@
         }
       ],
       "rating": 4
-    },
-    {
-      "id": 2,
-      "name": "jajecznica",
-      "description": [
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice",
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice",
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice",
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice",
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice",
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice"
-      ],
-      "ingredients": [
-        {
-          "name": "jajka",
-          "value": "3",
-          "type": "sztuki"
-        },
-        {
-          "name": "masło",
-          "value": "1",
-          "type": "łyżeczka"
-        }
-      ],
-      "rating": 5
-    },
-    {
-      "id": 2,
-      "name": "jajecznica",
-      "description": [
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice"
-      ],
-      "ingredients": [
-        {
-          "name": "jajka",
-          "value": "3",
-          "type": "sztuki"
-        },
-        {
-          "name": "masło",
-          "value": "1",
-          "type": "łyżeczka"
-        }
-      ],
-      "rating": 5
-    },
-    {
-      "id": 2,
-      "name": "jajecznica",
-      "description": [
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice"
-      ],
-      "ingredients": [
-        {
-          "name": "jajka",
-          "value": "3",
-          "type": "sztuki"
-        },
-        {
-          "name": "masło",
-          "value": "1",
-          "type": "łyżeczka"
-        }
-      ],
-      "rating": 5
-    },
-    {
-      "id": 2,
-      "name": "jajecznica",
-      "description": [
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice"
-      ],
-      "ingredients": [
-        {
-          "name": "jajka",
-          "value": "3",
-          "type": "sztuki"
-        },
-        {
-          "name": "masło",
-          "value": "1",
-          "type": "łyżeczka"
-        }
-      ],
-      "rating": 5
-    },
-    {
-      "id": 2,
-      "name": "jajecznica",
-      "description": [
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice"
-      ],
-      "ingredients": [
-        {
-          "name": "jajka",
-          "value": "3",
-          "type": "sztuki"
-        },
-        {
-          "name": "masło",
-          "value": "1",
-          "type": "łyżeczka"
-        }
-      ],
-      "rating": 5
-    },
-    {
-      "id": 1,
-      "name": "kluski z twarogiem",
-      "description": [
-        "Przygotowujemy garnek wody i solimy go",
-        "Gotujemy wodę",
-        "Gotujemy makaron",
-        "Do ugatowanego makaronu dodajemy twaróg"
-      ],
-      "ingredients": [
-        {
-          "name": "makaron",
-          "value": "250",
-          "type": "gram"
-        },
-        {
-          "name": "sól",
-          "value": "1",
-          "type": "szczypta"
-        },
-        {
-          "name": "twaróg",
-          "value": "150",
-          "type": "gram"
-        }
-      ],
-      "rating": 4
-    },
-    {
-      "id": 2,
-      "name": "jajecznica",
-      "description": [
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice"
-      ],
-      "ingredients": [
-        {
-          "name": "jajka",
-          "value": "3",
-          "type": "sztuki"
-        },
-        {
-          "name": "masło",
-          "value": "1",
-          "type": "łyżeczka"
-        }
-      ],
-      "rating": 5
-    },
-    {
-      "id": 2,
-      "name": "jajecznica",
-      "description": [
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice"
-      ],
-      "ingredients": [
-        {
-          "name": "jajka",
-          "value": "3",
-          "type": "sztuki"
-        },
-        {
-          "name": "masło",
-          "value": "1",
-          "type": "łyżeczka"
-        }
-      ],
-      "rating": 5
-    },
-    {
-      "id": 2,
-      "name": "jajecznica",
-      "description": [
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice"
-      ],
-      "ingredients": [
-        {
-          "name": "jajka",
-          "value": "3",
-          "type": "sztuki"
-        },
-        {
-          "name": "masło",
-          "value": "1",
-          "type": "łyżeczka"
-        }
-      ],
-      "rating": 5
-    },
-    {
-      "id": 2,
-      "name": "jajecznica",
-      "description": [
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice"
-      ],
-      "ingredients": [
-        {
-          "name": "jajka",
-          "value": "3",
-          "type": "sztuki"
-        },
-        {
-          "name": "masło",
-          "value": "1",
-          "type": "łyżeczka"
-        }
-      ],
-      "rating": 5
-    },
-    {
-      "id": 2,
-      "name": "jajecznica",
-      "description": [
-        "Rozpuszczamy masło na patelni",
-        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
-        "Mieszamy rozbite jajka i czekamy na jajecznice"
-      ],
-      "ingredients": [
-        {
-          "name": "jajka",
-          "value": "3",
-          "type": "sztuki"
-        },
-        {
-          "name": "masło",
-          "value": "1",
-          "type": "łyżeczka"
-        }
-      ],
-      "rating": 5
     }
   ],
   "users": []

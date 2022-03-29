@@ -7,7 +7,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   row-gap: 4rem;
-  column-gap: 2rem;
+  column-gap: 8rem;
   padding-right: 0.5rem;
 
   .stars {
@@ -28,7 +28,7 @@
     list-style-position: inside;
 
     li {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       margin-bottom: 0.5rem;
 
       &:last-of-type {
