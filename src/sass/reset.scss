@@ -17,8 +17,12 @@ body {
 }
 
 input,
-button {
+button,
+select {
   border: none;
+  font-family: inherit;
+  color: $color-text--dark;
+  background-color: $color-background--dark;
 }
 
 a {
