@@ -10,5 +10,5 @@
 </div>
 
 <div class="recipe-list-container">
-  <app-recipe-tile *ngFor="let recipe of recipes$ | async"></app-recipe-tile>
+  <app-recipe-tile [recipe]="recipe" *ngFor="let recipe of recipes$ | async"></app-recipe-tile>
 </div>

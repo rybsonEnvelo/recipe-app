@@ -25,6 +25,10 @@ select {
   background-color: $color-background--dark;
 }
 
+button {
+  cursor: pointer;
+}
+
 a {
   color: inherit;
   text-decoration: none;

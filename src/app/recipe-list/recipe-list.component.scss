@@ -5,7 +5,7 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .filter-container {
@@ -31,4 +31,10 @@
   select {
     padding-left: 1rem;
   }
+}
+
+.recipe-list-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }

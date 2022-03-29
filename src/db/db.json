@@ -49,6 +49,94 @@
         }
       ],
       "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "jajecznica",
+      "description": [
+        "Rozpuszczamy masło na patelni",
+        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
+        "Mieszamy rozbite jajka i czekamy na jajecznice"
+      ],
+      "ingredients": [
+        {
+          "name": "jajka",
+          "value": "3",
+          "type": "sztuki"
+        },
+        {
+          "name": "masło",
+          "value": "1",
+          "type": "łyżeczka"
+        }
+      ],
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "jajecznica",
+      "description": [
+        "Rozpuszczamy masło na patelni",
+        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
+        "Mieszamy rozbite jajka i czekamy na jajecznice"
+      ],
+      "ingredients": [
+        {
+          "name": "jajka",
+          "value": "3",
+          "type": "sztuki"
+        },
+        {
+          "name": "masło",
+          "value": "1",
+          "type": "łyżeczka"
+        }
+      ],
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "jajecznica",
+      "description": [
+        "Rozpuszczamy masło na patelni",
+        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
+        "Mieszamy rozbite jajka i czekamy na jajecznice"
+      ],
+      "ingredients": [
+        {
+          "name": "jajka",
+          "value": "3",
+          "type": "sztuki"
+        },
+        {
+          "name": "masło",
+          "value": "1",
+          "type": "łyżeczka"
+        }
+      ],
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "name": "jajecznica",
+      "description": [
+        "Rozpuszczamy masło na patelni",
+        "Rozbijamy jajka i dodajemy (uwaga! bez skorupki!)",
+        "Mieszamy rozbite jajka i czekamy na jajecznice"
+      ],
+      "ingredients": [
+        {
+          "name": "jajka",
+          "value": "3",
+          "type": "sztuki"
+        },
+        {
+          "name": "masło",
+          "value": "1",
+          "type": "łyżeczka"
+        }
+      ],
+      "rating": 5
     }
   ],
   "users": []
