@@ -2,7 +2,8 @@
 @use "sass/variables.scss" as *;
 
 :focus {
-  outline: solid 2px $color-green;
+  outline: solid 2px $color-violet;
+  outline-offset: -2px;
 }
 
 body {
@@ -36,6 +37,6 @@ ion-icon[name="star"] {
 
   &:hover {
     background-color: $color-background--light;
-    outline: solid 2px $color-green;
+    outline: solid 2px $color-violet;
   }
 }
