@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  padding-right: 0.5rem;
 }
 
 form {
@@ -20,9 +21,11 @@ form {
   }
 
   textarea {
+    height: 18rem;
+    max-height: 23rem;
+    min-height: 6rem;
     font-size: 1.4rem;
     padding: 0.7rem 1rem;
-    height: 18rem;
     resize: vertical;
   }
 
