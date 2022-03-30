@@ -38,5 +38,6 @@ ion-icon[name="star"] {
   &:hover {
     background-color: $color-background--light;
     outline: solid 2px $color-violet;
+    outline-offset: -2px;
   }
 }
