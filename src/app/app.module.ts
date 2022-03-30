@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FirstLetterUpperCasePipe } from './shared/first-letter-upper-case.pipe';
 import { MultiplyStarsPipe } from './shared/multiply-stars.pipe';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
     FirstLetterUpperCasePipe,
     MultiplyStarsPipe,
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

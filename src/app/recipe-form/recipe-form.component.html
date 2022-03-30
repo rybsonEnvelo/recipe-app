@@ -1,1 +1,27 @@
-<p>recipe-form works!</p>
+<ng-container>
+  <section class="container">
+    <h2>Nowy przepis</h2>
+    <form>
+      <input type="text" placeholder="Nazwa przepisu" />
+      <textarea placeholder="Szczegóły przygotowania. Każdy krok powinien być w osobnym zdaniu."></textarea>
+
+      <div class="ingredients-container">
+        <div class="ingredients-array">
+          <div class="ingredient-input">
+            <input type="text" placeholder="Nazwa składnika" />
+            <input type="text" placeholder="Ilość" />
+          </div>
+        </div>
+        <button class="button--primary" type="button">
+          <ion-icon name="add-outline"></ion-icon>
+          <span>Dodaj składnik</span>
+        </button>
+      </div>
+
+      <div class="buttons-container">
+        <button type="button">Zapisz</button>
+        <button type="button">Odrzuć</button>
+      </div>
+    </form>
+  </section>
+</ng-container>
