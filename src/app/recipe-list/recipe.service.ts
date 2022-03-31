@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RecipeApiService } from '../shared/recipe-api.service';
+import { RecipeApiService } from '../shared/services/recipe-api.service';
 
 @Injectable({
   providedIn: 'root',

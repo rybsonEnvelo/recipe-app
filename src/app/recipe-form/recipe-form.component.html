@@ -4,29 +4,51 @@
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="input-container">
-        <input formControlName="name" type="text" placeholder="Nazwa przepisu" />
-        <p>error</p>
+        <input appTrimInput formControlName="name" type="text" placeholder="Nazwa przepisu" />
+        <p *ngIf="form.controls['name'].dirty && form.controls['name'].errors?.['required']">Nazwa wymagana</p>
+        <p *ngIf="form.controls['name'].dirty && form.controls['name'].errors?.['minlength']">Minimum 3 znaki</p>
       </div>
 
       <div class="input-container">
         <textarea
+          appTrimInput
           formControlName="description"
           placeholder="Szczegóły przygotowania. Każdy krok powinien być w osobnym zdaniu."
         ></textarea>
-        <p>error</p>
+        <p *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['required']">
+          Szczegóły wymagane
+        </p>
+        <p *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['minlength']">
+          Minimum 8 znaków
+        </p>
       </div>
 
       <div class="ingredients-container" formArrayName="ingredients">
         <div class="ingredient-inputs-container" *ngFor="let ing of ingredients.controls; let i = index">
           <div class="ingredients-group" [formGroupName]="i">
             <div class="input-container">
-              <input formControlName="ingredientName" type="text" placeholder="Nazwa składnika" />
-              <p>error</p>
+              <input appTrimInput formControlName="ingredientName" type="text" placeholder="Nazwa składnika" />
+              <p
+                *ngIf="ingredients.controls[i].get('ingredientName')!.dirty
+              && ingredients.controls[i].get('ingredientName')!.errors?.['required']"
+              >
+                Nazwa wymagana
+              </p>
+              <p
+                *ngIf="ingredients.controls[i].get('ingredientName')!.dirty && ingredients.controls[i].get('ingredientName')!.errors?.['minlength']"
+              >
+                Minimum 3 znaki
+              </p>
             </div>
 
             <div class="input-container">
-              <input formControlName="ingredientValue" type="text" placeholder="Ilość" />
-              <p>error</p>
+              <input appTrimInput formControlName="ingredientValue" type="text" placeholder="Ilość" />
+              <p
+                *ngIf="ingredients.controls[i].get('ingredientValue')!.dirty
+            && ingredients.controls[i].get('ingredientValue')!.errors?.['required']"
+              >
+                Ilość wymagana
+              </p>
             </div>
 
             <button (click)="removeIngredient(i)" class="btn-remove-ingredient">

@@ -11,8 +11,8 @@ export class RecipeFormComponent implements OnInit {
   form!: FormGroup;
   ingredientFormGroup(): FormGroup {
     return this.formBuilder.group({
-      ingredientName: ['', Validators.required, Validators.minLength(3)],
-      ingredientValue: ['', Validators.required],
+      ingredientName: ['', [Validators.required, Validators.minLength(3)]],
+      ingredientValue: ['', [Validators.required]],
     });
   }
 
@@ -24,8 +24,8 @@ export class RecipeFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      name: ['', Validators.required, Validators.minLength(3)],
-      description: ['', Validators.required, Validators.minLength(16), , Validators.max(1500)],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(8), Validators.max(1500)]],
       ingredients: this.formBuilder.array([this.ingredientFormGroup()]),
     });
   }
@@ -35,6 +35,7 @@ export class RecipeFormComponent implements OnInit {
   }
 
   removeIngredient(index: number) {
+    if (index === 0) return;
     this.ingredients.removeAt(index);
   }
 
