@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../interfaces/Recipe';
-import { ShareService } from '../shared/services/share.service';
+import { ShareService } from '../recipe-details/share.service';
 
 @Component({
   selector: 'app-recipe-tile',

@@ -21,8 +21,4 @@ export class RecipeService {
       })
     );
   }
-
-  addRecipe(recipe: RecipePost) {
-    return this.recipeApiService.addRecipe(recipe).pipe(switchMap(() => this.getRecipes()));
-  }
 }

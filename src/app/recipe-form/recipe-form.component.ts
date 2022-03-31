@@ -4,6 +4,7 @@ import { tap } from 'rxjs';
 import { Recipe } from '../interfaces/Recipe';
 import { RecipePost } from '../interfaces/RecipePost';
 import { RecipeService } from '../recipe-list/recipe.service';
+import { FormService } from './form.service';
 
 @Component({
   selector: 'app-recipe-form',
@@ -23,7 +24,7 @@ export class RecipeFormComponent implements OnInit {
     return this.form.get('ingredients') as FormArray;
   }
 
-  constructor(private formBuilder: FormBuilder, private recipeService: RecipeService) {}
+  constructor(private formBuilder: FormBuilder, private formService: FormService) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -43,13 +44,6 @@ export class RecipeFormComponent implements OnInit {
   }
 
   onSubmit() {
-    const recipe: RecipePost = {
-      name: this.form.get('name')!.value,
-      description: this.form.get('description')!.value,
-      ingredients: [{ name: 'string', value: 'string2' }],
-      rating: 5,
-    };
-
-    this.recipeService.addRecipe(recipe).subscribe();
+    this.formService.openModal(this.form, this.ingredients);
   }
 }

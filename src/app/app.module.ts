@@ -15,6 +15,7 @@ import { MultiplyStarsPipe } from './shared/pipes/multiply-stars.pipe';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TrimInputDirective } from './shared/directives/trim-input.directive';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TrimInputDirective } from './shared/directives/trim-input.directive';
     FirstLetterUpperCasePipe,
     MultiplyStarsPipe,
     TrimInputDirective,
+    ModalComponent,
   ],
   imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule, ReactiveFormsModule],
   providers: [],
