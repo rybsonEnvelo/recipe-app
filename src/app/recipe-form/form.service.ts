@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
-import { Subject, switchMap } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, switchMap, tap } from 'rxjs';
+import { Ingredient } from '../interfaces/Ingredient';
 import { RecipePost } from '../interfaces/RecipePost';
 import { RecipeService } from '../recipe-list/recipe.service';
 import { RecipeApiService } from '../shared/services/recipe-api.service';
@@ -9,7 +9,18 @@ import { RecipeApiService } from '../shared/services/recipe-api.service';
   providedIn: 'root',
 })
 export class FormService {
-  constructor(private recipeApiService: RecipeApiService, private recipeService: RecipeService) {}
+  recipeRating = new ReplaySubject<number>(1);
+  recipe = new BehaviorSubject<{ name: string; description: string[]; ingredients: Ingredient[] } | null>(null);
+  rating: number = 0;
+
+  constructor(private recipeApiService: RecipeApiService, private recipeService: RecipeService) {
+    this.recipeRating
+      .pipe(
+        tap(console.warn),
+        switchMap((recipeRating) => this.addRecipe(this.generateRecipeToPost(recipeRating)))
+      )
+      .subscribe();
+  }
 
   splitToArray(value: string) {
     return value.split('\n');
@@ -19,16 +30,12 @@ export class FormService {
     return this.recipeApiService.addRecipe(recipe).pipe(switchMap(() => this.recipeService.getRecipes()));
   }
 
-  generateRecipeToPost(form: FormGroup, formArray: FormArray) {
+  generateRecipeToPost(rating: number) {
     return {
-      name: form.get('name')!.value,
-      description: this.splitToArray(form.get('description')!.value),
-      ingredients: formArray.value,
-      rating: 5,
+      name: this.recipe.value!.name,
+      description: this.recipe.value!.description,
+      rating: rating,
+      ingredients: this.recipe.value!.ingredients,
     };
-  }
-
-  openModal(form: FormGroup, formArray: FormArray) {
-    console.log(this.generateRecipeToPost(form, formArray));
   }
 }

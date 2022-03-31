@@ -30,25 +30,25 @@
         <div class="ingredient-inputs-container" *ngFor="let ing of ingredients.controls; let i = index">
           <div class="ingredients-group" [formGroupName]="i">
             <div class="input-container">
-              <input appTrimInput formControlName="ingredientName" type="text" placeholder="Nazwa składnika" />
+              <input appTrimInput formControlName="name" type="text" placeholder="Nazwa składnika" />
               <p
-                *ngIf="ingredients.controls[i].get('ingredientName')!.dirty
-              && ingredients.controls[i].get('ingredientName')!.errors?.['required']"
+                *ngIf="ingredients.controls[i].get('name')!.dirty
+              && ingredients.controls[i].get('name')!.errors?.['required']"
               >
                 Nazwa wymagana
               </p>
               <p
-                *ngIf="ingredients.controls[i].get('ingredientName')!.dirty && ingredients.controls[i].get('ingredientName')!.errors?.['minlength']"
+                *ngIf="ingredients.controls[i].get('name')!.dirty && ingredients.controls[i].get('name')!.errors?.['minlength']"
               >
                 Minimum 3 znaki
               </p>
             </div>
 
             <div class="input-container">
-              <input appTrimInput formControlName="ingredientValue" type="text" placeholder="Ilość" />
+              <input appTrimInput formControlName="value" type="text" placeholder="Ilość" />
               <p
-                *ngIf="ingredients.controls[i].get('ingredientValue')!.dirty
-            && ingredients.controls[i].get('ingredientValue')!.errors?.['required']"
+                *ngIf="ingredients.controls[i].get('value')!.dirty
+            && ingredients.controls[i].get('value')!.errors?.['required']"
               >
                 Ilość wymagana
               </p>
@@ -67,8 +67,10 @@
 
       <div class="buttons-container">
         <button type="submit" [disabled]="!form.valid">Zapisz</button>
-        <button type="button">Odrzuć</button>
+        <button type="button" (click)="clear()">Odrzuć</button>
       </div>
     </form>
   </section>
+
+  <div #modal></div>
 </ng-container>
