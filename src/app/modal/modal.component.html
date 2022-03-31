@@ -1,1 +1,9 @@
-<p>modal works!</p>
+<p>Oceń ten przepis</p>
+
+<div>
+  <button #star *ngFor="let i of 5 | multiplyStars; let index = index">
+    <ion-icon class="inactive" name="star" (click)="setRating(index)"></ion-icon>
+  </button>
+</div>
+
+<button class="save-btn">Zapisz</button>
