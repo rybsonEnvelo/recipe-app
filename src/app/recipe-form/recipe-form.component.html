@@ -21,6 +21,9 @@
         <p *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['minlength']">
           Minimum 8 znaków
         </p>
+        <p *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['maxlength']">
+          Maksymalnie 1600 znaków
+        </p>
       </div>
 
       <div class="ingredients-container" formArrayName="ingredients">
@@ -68,6 +71,4 @@
       </div>
     </form>
   </section>
-
-  {{ form.value | json }}
 </ng-container>
