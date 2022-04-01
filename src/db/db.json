@@ -117,6 +117,20 @@
         }
       ],
       "rating": 4
+    },
+    {
+      "name": "Nazwa przepisy",
+      "description": [
+        "safdasfasdfdasfasd"
+      ],
+      "rating": 4,
+      "ingredients": [
+        {
+          "name": "sdfadsfdsa",
+          "value": "fasdfsadf"
+        }
+      ],
+      "id": 5
     }
   ],
   "users": []
