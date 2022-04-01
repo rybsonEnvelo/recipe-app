@@ -10,7 +10,7 @@
 }
 
 .modal {
-  outline: 2px solid $color-orange;
+  margin: 10% auto 0;
   padding: 2rem 4rem;
   width: 32rem;
   display: flex;
@@ -18,7 +18,6 @@
   align-items: center;
   gap: 2rem;
   background-color: $color-background--light;
-  margin: 10% auto 0;
 
   .buttons {
     display: flex;
@@ -45,9 +44,9 @@
     gap: 1rem;
 
     button {
+      padding: 0;
       display: block;
       background-color: transparent;
-      padding: 0;
 
       &:focus {
         outline: 1px solid $color-orange;

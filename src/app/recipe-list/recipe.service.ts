@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, switchMap, take, tap } from 'rxjs';
 import { Recipe } from '../interfaces/Recipe';
-import { RecipePost } from '../interfaces/RecipePost';
 import { RecipeApiService } from '../shared/services/recipe-api.service';
 
 @Injectable({

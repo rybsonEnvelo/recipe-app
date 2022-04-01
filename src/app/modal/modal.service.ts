@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, ComponentRef, Injectable, ViewContainerRef } from '@angular/core';
+import { ComponentRef, Injectable, ViewContainerRef } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FormService } from '../recipe-form/form.service';
 import { ModalComponent } from './modal.component';

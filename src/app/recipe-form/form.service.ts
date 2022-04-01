@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, switchMap, tap } from 'rxjs';
 import { Ingredient } from '../interfaces/Ingredient';
-import { RecipePost } from '../interfaces/RecipePost';
+import { Recipe } from '../interfaces/Recipe';
 import { RecipeService } from '../recipe-list/recipe.service';
 import { RecipeApiService } from '../shared/services/recipe-api.service';
 
@@ -26,7 +26,7 @@ export class FormService {
     return value.split('\n');
   }
 
-  addRecipe(recipe: RecipePost) {
+  addRecipe(recipe: Recipe) {
     return this.recipeApiService.addRecipe(recipe).pipe(switchMap(() => this.recipeService.getRecipes()));
   }
 
@@ -36,6 +36,7 @@ export class FormService {
       description: this.recipe.value!.description,
       rating: rating,
       ingredients: this.recipe.value!.ingredients,
+      id: 0,
     };
   }
 }

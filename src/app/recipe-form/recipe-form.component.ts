@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ModalService } from '../modal/modal.service';
 import { FormService } from './form.service';
 
@@ -25,10 +25,6 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
 
   get ingredients() {
     return this.form.get('ingredients') as FormArray;
-  }
-
-  set ingredients(array: FormArray) {
-    this.ingredients = this.formBuilder.array([this.ingredientFormGroup()]);
   }
 
   constructor(
@@ -62,11 +58,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   }
 
   clear() {
-    this.form.get('name')!.setValue('');
-    this.form.get('name')!.markAsPristine();
-    this.form.get('description')!.setValue('');
-    this.form.get('description')!.markAsPristine();
-    this.ingredients.reset();
+    this.form.reset();
     this.ingredients.clear();
     this.ingredients.insert(0, this.ingredientFormGroup());
   }
