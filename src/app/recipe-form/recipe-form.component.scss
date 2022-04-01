@@ -1,25 +1,21 @@
 @use "../../sass/variables.scss" as *;
+@use "../../sass/mixins.scss" as *;
 
 :host {
   overflow-y: auto;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  @include flex(column, 1.5rem, unset, unset);
   padding-right: 0.5rem;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  @include flex(column, 2rem, unset, unset);
 
   input,
   textarea {
     width: 100%;
-    padding: 0.7rem 1rem;
   }
 
   textarea {
@@ -31,27 +27,10 @@ form {
     resize: vertical;
   }
 
-  button {
-    padding: 0.7rem 1rem;
-  }
-
-  ion-icon {
-    width: 1.6rem;
-    height: 1.6rem;
-  }
-
-  .input-container {
-    p {
-      font-size: 1.2rem;
-      color: $color-red;
-    }
-  }
-
   .ingredients-container {
     .ingredients-group {
       width: 100%;
-      display: flex;
-      gap: 2rem;
+      @include flex(row, 2rem, unset, unset);
       margin-top: 0.5rem;
 
       div:nth-of-type(2) {
@@ -61,10 +40,7 @@ form {
 
     button {
       margin: 2rem auto 0 auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
+      @include flex(row, 0.5rem, center, center);
     }
 
     .btn-remove-ingredient {
@@ -80,23 +56,6 @@ form {
   }
 
   .buttons-container {
-    display: flex;
-    gap: 1rem;
-    justify-content: flex-end;
-
-    button {
-      &:first-child {
-        background-color: $color-green;
-
-        &:disabled {
-          background-color: $color-background--dark;
-        }
-      }
-
-      &:last-child {
-        background-color: $color-red;
-        color: $color-background--light;
-      }
-    }
+    @include flex(row, 1rem, unset, flex-end);
   }
 }

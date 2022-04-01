@@ -8,7 +8,7 @@ export class SortService {
   getSortOptions(): SortOption[] {
     return [
       {
-        label: 'Szukaj',
+        label: 'Sortuj',
         value: null,
       },
       {

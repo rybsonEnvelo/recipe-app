@@ -1,19 +1,17 @@
 @use "../../sass/variables.scss" as *;
+@use "../../sass/mixins.scss" as *;
 
 :host {
-  background-color: $color-background--light;
+  @include flex(column, 2rem, unset, unset);
   padding: 2rem 2rem 2rem 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
   max-height: 100%;
   overflow: hidden;
+  background-color: $color-background--light;
 }
 
 .filter-container {
   height: 3.5rem;
-  display: flex;
-  gap: 1.5rem;
+  @include flex(row, 1.5rem, unset, unset);
   margin-left: auto;
   padding-right: 0.5rem;
 
