@@ -15,9 +15,7 @@
     <div class="ingredients">
       <h3>Składniki</h3>
       <ul class="ingredients-list">
-        <li *ngFor="let ingredient of recipe.ingredients">
-          {{ ingredient.name }} - {{ ingredient.value }} {{ ingredient.type }}
-        </li>
+        <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.value }}</li>
       </ul>
     </div>
   </section>

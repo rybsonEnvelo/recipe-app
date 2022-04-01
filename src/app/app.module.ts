@@ -10,9 +10,12 @@ import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 
 import { MainComponent } from './main/main.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FirstLetterUpperCasePipe } from './shared/first-letter-upper-case.pipe';
-import { MultiplyStarsPipe } from './shared/multiply-stars.pipe';
+import { FirstLetterUpperCasePipe } from './shared/pipes/first-letter-upper-case.pipe';
+import { MultiplyStarsPipe } from './shared/pipes/multiply-stars.pipe';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TrimInputDirective } from './shared/directives/trim-input.directive';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +28,10 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
     MainComponent,
     FirstLetterUpperCasePipe,
     MultiplyStarsPipe,
+    TrimInputDirective,
+    ModalComponent,
   ],
-  imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

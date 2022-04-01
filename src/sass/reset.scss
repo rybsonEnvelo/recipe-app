@@ -18,7 +18,8 @@ body {
 
 input,
 button,
-select {
+select,
+textarea {
   border: none;
   font-family: inherit;
   color: $color-text--dark;

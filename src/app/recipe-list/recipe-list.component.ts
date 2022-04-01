@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs';
 import { Recipe } from '../interfaces/Recipe';
 import { SortOption } from '../interfaces/SortOption';
 import { RecipeService } from './recipe.service';
@@ -11,9 +12,11 @@ import { SortService } from './sort.service';
 })
 export class RecipeListComponent implements OnInit {
   sortOptions: SortOption[] = this.sortService.getSortOptions();
-  recipes$ = this.recipeService.getRecipes();
+  recipes: Recipe[] = [];
 
   constructor(private sortService: SortService, private recipeService: RecipeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.recipeService.recipes$.subscribe((result) => (this.recipes = result));
+  }
 }

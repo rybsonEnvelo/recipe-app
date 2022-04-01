@@ -15,43 +15,35 @@
       "ingredients": [
         {
           "name": "jogurt naturalny",
-          "value": "250",
-          "type": "gram"
+          "value": "250g"
         },
         {
           "name": "jajko",
-          "value": "2",
-          "type": "sztuki"
+          "value": "2 sztuki"
         },
         {
           "name": "cukier wanilinowy",
-          "value": "1",
-          "type": "opakowanie"
+          "value": "1 opakowanie"
         },
         {
           "name": "cukier",
-          "value": "1",
-          "type": "łyżka"
+          "value": "1 łyżka"
         },
         {
           "name": "mąka przenna",
-          "value": "170",
-          "type": "gram"
+          "value": "170g"
         },
         {
           "name": "kakao",
-          "value": "1",
-          "type": "łyżka"
+          "value": "1 łyżka"
         },
         {
           "name": "proszek do pieczenia",
-          "value": "1.5",
-          "type": "łyżeczka"
+          "value": "1.5 łyżeczki"
         },
         {
           "name": "soda oczyszczona",
-          "value": "0.5",
-          "type": "łyżeczka"
+          "value": "0.5 łyżeczki"
         }
       ],
       "rating": 5
@@ -67,13 +59,11 @@
       "ingredients": [
         {
           "name": "jajka",
-          "value": "3",
-          "type": "sztuki"
+          "value": "3 sztuki"
         },
         {
           "name": "masło",
-          "value": "1",
-          "type": "łyżeczka"
+          "value": "1 łyżeczka"
         }
       ],
       "rating": 3
@@ -90,18 +80,15 @@
       "ingredients": [
         {
           "name": "bagietka",
-          "value": "1",
-          "type": "sztuki"
+          "value": "1 sztuka"
         },
         {
           "name": "mozarella",
-          "value": "2",
-          "type": "sztuki"
+          "value": "2 sztuki"
         },
         {
           "name": "szynka",
-          "value": "6",
-          "type": "plasterki"
+          "value": "6 plasterków"
         }
       ],
       "rating": 2
@@ -118,18 +105,15 @@
       "ingredients": [
         {
           "name": "makaron",
-          "value": "250",
-          "type": "gram"
+          "value": "250g"
         },
         {
           "name": "sól",
-          "value": "1",
-          "type": "szczypta"
+          "value": "szczypta"
         },
         {
           "name": "twaróg",
-          "value": "150",
-          "type": "gram"
+          "value": "150g"
         }
       ],
       "rating": 4

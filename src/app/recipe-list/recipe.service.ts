@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
-import { RecipeApiService } from '../shared/recipe-api.service';
+import { Observable, Subject, switchMap, take, tap } from 'rxjs';
+import { Recipe } from '../interfaces/Recipe';
+import { RecipeApiService } from '../shared/services/recipe-api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
-  constructor(private recipeApiService: RecipeApiService) {}
+  recipes$ = new Subject<Recipe[]>();
 
-  getRecipes() {
-    return this.getRecipesById();
+  constructor(private recipeApiService: RecipeApiService) {
+    this.getRecipes().pipe(take(1)).subscribe();
   }
 
-  getRecipesById() {
-    return this.recipeApiService.getRecipesById();
+  getRecipes() {
+    return this.recipeApiService.getRecipes().pipe(
+      tap((recipes) => {
+        this.recipes$.next(recipes);
+      })
+    );
   }
 }
