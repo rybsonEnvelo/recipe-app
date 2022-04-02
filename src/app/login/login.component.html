@@ -1,22 +1,27 @@
-<form>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="input-with-icon-container">
-    <input type="email" placeholder="Podaj adres email" />
+    <input formControlName="email" type="email" placeholder="Podaj adres email" />
     <ion-icon name="person-outline"></ion-icon>
-    <!-- <p *ngIf="form.controls['name'].dirty && form.controls['name'].errors?.['minlength']" class="msg--error">
-      Minimum 3 znaki
-    </p> -->
-    <p class="msg--error">asdasdasd</p>
+    <p *ngIf="loginForm.controls['email'].dirty && loginForm.controls['email'].errors?.['pattern']" class="msg--error">
+      Musisz podać adres email
+    </p>
   </div>
 
   <div class="input-with-icon-container">
-    <input type="password" placeholder="Podaj hasło" />
+    <input formControlName="password" type="password" placeholder="Podaj hasło" />
     <ion-icon name="lock-closed-outline"></ion-icon>
-    <p class="msg--error">asdasdasd</p>
+    <p
+      *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].errors?.['minlength']"
+      class="msg--error"
+    >
+      Hasło musi mieć minimum 6 znaków
+    </p>
+    <p *ngIf="isLoginError" class="msg--error">Błędne hasło lub użytkownik nie istnieje</p>
   </div>
 
   <div>
-    <button class="button--success">Zaloguj się</button>
-    <button class="button--success">Zarejestruj się</button>
+    <button type="submit" [disabled]="!loginForm.valid" class="button--success">Zaloguj się</button>
+    <button type="button" [disabled]="!loginForm.valid" class="button--warning">Zarejestruj się</button>
   </div>
 
   <a href="#">Nie pamiętasz hasła?</a>
