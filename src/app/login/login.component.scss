@@ -23,4 +23,31 @@ form {
     font-size: $font-size--xxs;
     color: $color-text--dark;
   }
+
+  button {
+    position: relative;
+
+    p {
+      visibility: visible;
+    }
+
+    img {
+      position: absolute;
+      width: 4rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      visibility: hidden;
+    }
+  }
+
+  .loading {
+    p {
+      visibility: hidden;
+    }
+
+    img {
+      visibility: visible;
+    }
+  }
 }

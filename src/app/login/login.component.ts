@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { tap } from 'rxjs';
+import { AuthState } from '../shared/enums/AuthState';
 import { Role } from '../shared/enums/Role';
 import { AuthService } from '../shared/services/auth.service';
 
@@ -8,7 +10,9 @@ import { AuthService } from '../shared/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
+  @ViewChild('loginButton') loadingButton!: ElementRef;
+  @ViewChild('registerButton') registerButton!: ElementRef;
   loginForm!: FormGroup;
   isLoginError: boolean = false;
 
@@ -18,6 +22,12 @@ export class LoginComponent implements OnInit {
     this.createForm();
   }
 
+  ngAfterViewInit(): void {
+    this.authService.authState.subscribe({
+      next: (state) => this.displayAuthState(state),
+    });
+  }
+
   createForm() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(this.authService.regex)]],
@@ -25,17 +35,26 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onLogin() {
     console.log(this.loginForm.value);
-    console.log('ASd');
   }
 
   onRegister() {
+    this.authService.authState.next(AuthState.REGISTER_LOADING);
+
     this.authService.registerUser({
       id: 0,
       email: this.loginForm!.get('email')!.value,
       password: this.loginForm!.get('password')!.value,
-      role: Role.AUTHOR
+      role: Role.AUTHOR,
     });
+  }
+
+  displayAuthState(value: string) {
+    // const loadingButton = this.loadingButton.nativeElement as HTMLButtonElement;
+    const registerButton = this.registerButton.nativeElement as HTMLButtonElement;
+    if (value === AuthState.REGISTER_LOADING) registerButton.classList.add('loading');
+    if (value === AuthState.REGISTER_ERROR) registerButton.classList.remove('loading');
+    if (value === AuthState.REGISTER_SUCCESS) registerButton.classList.remove('loading');
   }
 }

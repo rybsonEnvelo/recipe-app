@@ -120,9 +120,7 @@
     },
     {
       "name": "Nazwa przepisy",
-      "description": [
-        "safdasfasdfdasfasd"
-      ],
+      "description": ["safdasfasdfdasfasd"],
       "rating": 4,
       "ingredients": [
         {
@@ -133,11 +131,5 @@
       "id": 5
     }
   ],
-  "users": [
-    {
-      "id": 1,
-      "email": "x@x.pl",
-      "password": "123123"
-    }
-  ]
+  "users": []
 }
