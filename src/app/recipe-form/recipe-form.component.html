@@ -17,7 +17,7 @@
         <textarea
           appTrimInput
           formControlName="description"
-          placeholder="Szczegóły przygotowania. Każdy krok powinien być w osobnym zdaniu."
+          placeholder="Szczegóły przygotowania. Każdy krok powinien być oddzielony klawiszem ENTER."
         ></textarea>
         <p
           *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['required']"
