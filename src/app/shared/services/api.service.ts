@@ -23,4 +23,6 @@ export class ApiService {
   registerUser(user: User) {
     return this.httpClient.post<User>(`${this.API_URL}/register`, user);
   }
+
+  // loginUser(email: string, password: string)
 }

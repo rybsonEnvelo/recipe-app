@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
     this.authService.registerUserState$.next({ state: State.LOADING });
 
     this.authService.registerUser({
-      id: 0,
       email: this.loginForm!.get('email')!.value,
       password: this.loginForm!.get('password')!.value,
       role: Role.AUTHOR,

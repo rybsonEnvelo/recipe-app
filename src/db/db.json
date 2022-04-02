@@ -120,7 +120,9 @@
     },
     {
       "name": "Nazwa przepisy",
-      "description": ["safdasfasdfdasfasd"],
+      "description": [
+        "safdasfasdfdasfasd"
+      ],
       "rating": 4,
       "ingredients": [
         {
@@ -131,5 +133,24 @@
       "id": 5
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "test@test.pl",
+      "password": "$2a$10$a.BxjKg2Fejh.jMs3ScqJu.ahX2rkuFwF7yn/V/SUxrzAmkyWvpSW",
+      "id": 1,
+      "role": "author"
+    },
+    {
+      "email": "mar@asd.pl",
+      "password": "$2a$10$S5Zkz8tbJJbIVezkpZ6RnOCWfL2JJzWeyvBV3YOynuhP62NqSG6zK",
+      "id": 2,
+      "role": "author"
+    },
+    {
+      "email": "aaaa@asd.pl",
+      "password": "$2a$10$UXTFmRVpFbTYR.cKa/LQfuop2d79P9sknHA4LuXCQYwGCXVU8vICK",
+      "role": "author",
+      "id": 3
+    }
+  ]
 }

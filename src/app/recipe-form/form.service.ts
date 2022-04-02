@@ -36,7 +36,6 @@ export class FormService {
       description: this.recipe.value!.description,
       rating: rating,
       ingredients: this.recipe.value!.ingredients,
-      id: 0,
     };
   }
 }
