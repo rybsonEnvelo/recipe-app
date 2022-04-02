@@ -15,7 +15,7 @@
 }
 
 a,
-button {
+app-logout {
   margin-left: auto;
 }
 
@@ -32,20 +32,5 @@ a {
     width: 2.6rem;
     height: 2.6rem;
     transition: transform 200ms;
-  }
-}
-
-button {
-  background-color: inherit;
-  cursor: pointer;
-
-  ion-icon {
-    width: 2.6rem;
-    height: 2.6rem;
-    transition: transform 200ms;
-
-    &:hover {
-      color: $color-violet;
-    }
   }
 }

@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TrimInputDirective } from './shared/directives/trim-input.directive';
 import { ModalComponent } from './modal/modal.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { LoginComponent } from './login/login.component';
     TrimInputDirective,
     ModalComponent,
     LoginComponent,
+    LogoutComponent,
   ],
   imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule, ReactiveFormsModule],
   providers: [],
