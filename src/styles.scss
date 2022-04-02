@@ -100,3 +100,19 @@ button {
   font-size: 1.2rem;
   color: $color-red;
 }
+
+.input-with-icon-container {
+  position: relative;
+
+  input {
+    width: max(16rem, 100%);
+    padding: 0.7rem 1rem 0.7rem 3.5rem;
+  }
+
+  ion-icon {
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    transform: translateY(50%);
+  }
+}

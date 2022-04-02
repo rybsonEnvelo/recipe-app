@@ -16,6 +16,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { TrimInputDirective } from './shared/directives/trim-input.directive';
 import { ModalComponent } from './modal/modal.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ModalComponent } from './modal/modal.component';
     MultiplyStarsPipe,
     TrimInputDirective,
     ModalComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, IonicModule.forRoot(), HttpClientModule, ReactiveFormsModule],
   providers: [],

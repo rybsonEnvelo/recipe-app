@@ -1,0 +1,26 @@
+@use "../../sass/mixins.scss" as *;
+@use "../../sass/variables.scss" as *;
+
+:host {
+  height: 100%;
+  @include flex(row, unset, center, center);
+  background-color: $color-background--dark;
+}
+
+form {
+  padding: 3rem 4rem;
+  @include flex(column, 1rem, center, center);
+  background-color: $color-background--light;
+  transform: translateY(-20%);
+
+  div:last-of-type {
+    width: 100%;
+    @include flex(row, 1rem, unset, center);
+    margin-top: 1rem;
+  }
+
+  a {
+    font-size: $font-size--xxs;
+    color: $color-text--dark;
+  }
+}
