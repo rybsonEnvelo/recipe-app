@@ -1,11 +1,10 @@
 @use "../../sass/variables.scss" as *;
+@use "../../sass/mixins.scss" as *;
 
 :host {
-  background-color: $color-background--light;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(row, unset, center, center);
   padding: 0 6rem;
+  background-color: $color-background--light;
 
   &:hover {
     a ion-icon {
@@ -21,10 +20,7 @@ button {
 }
 
 a {
-  display: flex;
-  gap: 1.4rem;
-  justify-content: center;
-  align-items: center;
+  @include flex(row, 1.4rem, center, center);
 
   h1 {
     font-weight: 700;

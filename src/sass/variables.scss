@@ -1,11 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 $font-primary: "Poppins", sans-serif;
+$font-size--default: clamp(1.2rem, 1.5vw, 1.5rem);
+$font-size--xs: clamp(1.2rem, 1.5vw, 1.4rem);
 
 $color-background--dark: #f2f2f3;
 $color-background--light: #ffffff;
 $color-green: #34e4b5;
+$color-green--light: #5de9c4;
 $color-red: #e03a45;
+$color-red--light: #e34e58;
 $color-violet: #894ba9;
 $color-orange: #f99f38;
 $color-text--light: #dbdfea;

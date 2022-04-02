@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, switchMap, tap } from 'rxjs';
 import { Ingredient } from '../interfaces/Ingredient';
 import { Recipe } from '../interfaces/Recipe';
-import { RecipeService } from '../recipe-list/recipe.service';
+import { RecipeListService } from '../recipe-list/recipe-list.service';
 import { RecipeApiService } from '../shared/services/recipe-api.service';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class FormService {
   recipe = new BehaviorSubject<{ name: string; description: string[]; ingredients: Ingredient[] } | null>(null);
   rating: number = 0;
 
-  constructor(private recipeApiService: RecipeApiService, private recipeService: RecipeService) {
+  constructor(private recipeApiService: RecipeApiService, private RecipeListService: RecipeListService) {
     this.recipeRating
       .pipe(
         tap(console.warn),
@@ -27,7 +27,7 @@ export class FormService {
   }
 
   addRecipe(recipe: Recipe) {
-    return this.recipeApiService.addRecipe(recipe).pipe(switchMap(() => this.recipeService.getRecipes()));
+    return this.recipeApiService.addRecipe(recipe).pipe(switchMap(() => this.RecipeListService.getRecipes()));
   }
 
   generateRecipeToPost(rating: number) {

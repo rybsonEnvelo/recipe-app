@@ -1,4 +1,5 @@
 @forward "sass/reset.scss";
+@forward "sass/mixins.scss";
 @use "sass/variables.scss" as *;
 
 :focus {
@@ -20,24 +21,82 @@ p {
 
 ion-icon {
   color: $color-text--dark;
+  width: 1.6rem;
+  height: 1.6rem;
+
+  &[name="star"] {
+    width: clamp(1.2rem, 1.5vw, 1.5rem);
+    height: clamp(1.2rem, 1.5vw, 1.5rem);
+    margin-right: clamp(0.2rem, 0.4vw, 0.5rem);
+    color: $color-orange;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
 }
 
-ion-icon[name="star"] {
-  margin-top: 0.6rem;
-  margin: 0.6rem 0.5rem 0 0;
-  color: $color-orange;
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-  &:last-of-type {
-    margin-right: 0;
+button,
+input,
+select,
+textarea {
+  padding: 0.7rem 1rem;
+  border: none;
+  font-family: inherit;
+  font-size: $font-size--xs;
+  color: $color-text--dark;
+  background-color: $color-background--dark;
+}
+
+button {
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: $color-background--dark;
+
+    &:hover {
+      background-color: $color-background--dark;
+    }
   }
 }
 
 .button--primary {
   transition: background-color 100ms;
+  background-color: $color-background--dark;
 
   &:hover {
     background-color: $color-background--light;
     outline: solid 2px $color-violet;
     outline-offset: -2px;
   }
+}
+
+.button--error {
+  transition: background-color 100ms;
+  background-color: $color-red;
+  color: $color-background--light;
+
+  &:hover {
+    background-color: $color-red--light;
+  }
+}
+
+.button--success {
+  transition: background-color 100ms;
+  background-color: $color-green;
+
+  &:hover {
+    background-color: $color-green--light;
+  }
+}
+
+.msg--error {
+  font-size: 1.2rem;
+  color: $color-red;
 }

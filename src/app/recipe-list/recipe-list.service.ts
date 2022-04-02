@@ -6,7 +6,7 @@ import { RecipeApiService } from '../shared/services/recipe-api.service';
 @Injectable({
   providedIn: 'root',
 })
-export class RecipeService {
+export class RecipeListService {
   recipes$ = new Subject<Recipe[]>();
 
   constructor(private recipeApiService: RecipeApiService) {

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { tap } from 'rxjs';
 import { Recipe } from '../interfaces/Recipe';
 import { SortOption } from '../interfaces/SortOption';
-import { RecipeService } from './recipe.service';
+import { RecipeListService } from './recipe-list.service';
 import { SortService } from './sort.service';
 
 @Component({
@@ -13,10 +14,23 @@ import { SortService } from './sort.service';
 export class RecipeListComponent implements OnInit {
   sortOptions: SortOption[] = this.sortService.getSortOptions();
   recipes: Recipe[] = [];
+  filterForm!: FormGroup;
 
-  constructor(private sortService: SortService, private recipeService: RecipeService) {}
+  constructor(
+    private sortService: SortService,
+    private RecipeListService: RecipeListService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {
-    this.recipeService.recipes$.subscribe((result) => (this.recipes = result));
+    this.createForm();
+    this.RecipeListService.recipes$.subscribe((result) => (this.recipes = result));
+  }
+
+  createForm() {
+    this.filterForm = this.formBuilder.group({
+      search: [''],
+      select: [null],
+    });
   }
 }

@@ -37,15 +37,19 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.createForm();
+  }
+
+  ngOnDestroy(): void {
+    if (this.sub) this.sub.unsubscribe();
+  }
+
+  createForm() {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(1600)]],
       ingredients: this.formBuilder.array([this.ingredientFormGroup()]),
     });
-  }
-
-  ngOnDestroy(): void {
-    if (this.sub) this.sub.unsubscribe();
   }
 
   addIngredient() {

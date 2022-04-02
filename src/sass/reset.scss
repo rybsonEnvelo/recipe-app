@@ -15,22 +15,3 @@ body {
   font-size: 1.6rem;
   font-family: $font-primary;
 }
-
-input,
-button,
-select,
-textarea {
-  border: none;
-  font-family: inherit;
-  color: $color-text--dark;
-  background-color: $color-background--dark;
-}
-
-button {
-  cursor: pointer;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}

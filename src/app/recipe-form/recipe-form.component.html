@@ -5,23 +5,36 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="input-container">
         <input appTrimInput formControlName="name" type="text" placeholder="Nazwa przepisu" />
-        <p *ngIf="form.controls['name'].dirty && form.controls['name'].errors?.['required']">Nazwa wymagana</p>
-        <p *ngIf="form.controls['name'].dirty && form.controls['name'].errors?.['minlength']">Minimum 3 znaki</p>
+        <p *ngIf="form.controls['name'].dirty && form.controls['name'].errors?.['required']" class="msg--error">
+          Nazwa wymagana
+        </p>
+        <p *ngIf="form.controls['name'].dirty && form.controls['name'].errors?.['minlength']" class="msg--error">
+          Minimum 3 znaki
+        </p>
       </div>
 
       <div class="input-container">
         <textarea
           appTrimInput
           formControlName="description"
-          placeholder="Szczegóły przygotowania. Każdy krok powinien być w osobnym zdaniu."
+          placeholder="Szczegóły przygotowania. Każdy krok powinien być oddzielony klawiszem ENTER."
         ></textarea>
-        <p *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['required']">
+        <p
+          *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['required']"
+          class="msg--error"
+        >
           Szczegóły wymagane
         </p>
-        <p *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['minlength']">
+        <p
+          *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['minlength']"
+          class="msg--error"
+        >
           Minimum 8 znaków
         </p>
-        <p *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['maxlength']">
+        <p
+          *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['maxlength']"
+          class="msg--error"
+        >
           Maksymalnie 1600 znaków
         </p>
       </div>
@@ -34,11 +47,13 @@
               <p
                 *ngIf="ingredients.controls[i].get('name')!.dirty
               && ingredients.controls[i].get('name')!.errors?.['required']"
+                class="msg--error"
               >
                 Nazwa wymagana
               </p>
               <p
                 *ngIf="ingredients.controls[i].get('name')!.dirty && ingredients.controls[i].get('name')!.errors?.['minlength']"
+                class="msg--error"
               >
                 Minimum 3 znaki
               </p>
@@ -49,6 +64,7 @@
               <p
                 *ngIf="ingredients.controls[i].get('value')!.dirty
             && ingredients.controls[i].get('value')!.errors?.['required']"
+                class="msg--error"
               >
                 Ilość wymagana
               </p>
@@ -66,8 +82,8 @@
       </div>
 
       <div class="buttons-container">
-        <button type="submit" [disabled]="!form.valid">Zapisz</button>
-        <button type="button" (click)="clear()">Odrzuć</button>
+        <button type="submit" class="button--success" [disabled]="!form.valid">Zapisz</button>
+        <button type="button" class="button--error" (click)="clear()">Odrzuć</button>
       </div>
     </form>
   </section>

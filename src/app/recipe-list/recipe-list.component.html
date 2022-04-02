@@ -1,14 +1,16 @@
-<div class="filter-container">
+<form [formGroup]="filterForm" class="filter-container">
   <div class="input-container">
-    <input type="text" placeholder="Szukaj..." />
+    <input formControlName="search" type="text" placeholder="Szukaj..." />
     <ion-icon name="search-outline"></ion-icon>
   </div>
 
-  <select>
+  <select formControlName="select">
     <option *ngFor="let option of sortOptions" [value]="option.value">{{ option.label }}</option>
   </select>
-</div>
+</form>
 
 <div class="recipe-list-container">
   <app-recipe-tile [recipe]="recipe" *ngFor="let recipe of recipes"></app-recipe-tile>
 </div>
+
+{{ filterForm.value | json }}
