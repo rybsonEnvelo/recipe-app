@@ -8,6 +8,7 @@
 }
 
 form {
+  width: min(40rem, 100% - 2rem);
   padding: 3rem clamp(1rem, 4vw, 4rem);
   @include flex(column, 1rem, center, center);
   background-color: $color-background--light;

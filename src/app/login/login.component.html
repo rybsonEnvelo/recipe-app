@@ -1,6 +1,13 @@
 <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
   <div class="input-with-icon-container">
-    <input appTrimInput formControlName="email" type="email" maxlength="50" placeholder="Podaj adres email" />
+    <input
+      appTrimInput
+      (click)="clearError()"
+      formControlName="email"
+      type="email"
+      maxlength="50"
+      placeholder="Podaj adres email"
+    />
     <ion-icon name="person-outline"></ion-icon>
     <p *ngIf="loginForm.controls['email'].dirty && loginForm.controls['email'].errors?.['pattern']" class="msg--error">
       Musisz podać adres email
@@ -16,7 +23,8 @@
     >
       Hasło musi mieć minimum 6 znaków
     </p>
-    <p *ngIf="isLoginError" class="msg--error">Błędne hasło lub użytkownik nie istnieje</p>
+    <p *ngIf="errorMsg" class="msg--error">{{ errorMsg }}</p>
+    <p *ngIf="successMsg" class="msg--success">{{ successMsg }}</p>
   </div>
 
   <div>

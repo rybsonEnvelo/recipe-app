@@ -110,8 +110,14 @@ button {
   color: $color-red;
 }
 
+.msg--success {
+  font-size: 1.2rem;
+  color: $color-green;
+}
+
 .input-with-icon-container {
   position: relative;
+  width: 100%;
 
   input {
     width: max(16rem, 100%);

@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { tap } from 'rxjs';
-import { AuthState } from '../shared/enums/AuthState';
+import { State } from '../shared/enums/State';
 import { Role } from '../shared/enums/Role';
+import { AuthResponse } from '../shared/interfaces/AuthResponse';
 import { AuthService } from '../shared/services/auth.service';
 
 @Component({
@@ -10,21 +10,20 @@ import { AuthService } from '../shared/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit, AfterViewInit {
+export class LoginComponent implements OnInit {
   @ViewChild('loginButton') loadingButton!: ElementRef;
   @ViewChild('registerButton') registerButton!: ElementRef;
+  @ViewChild('emailInput') emailInput!: ElementRef;
   loginForm!: FormGroup;
-  isLoginError: boolean = false;
+  errorMsg: string = '';
+  successMsg: string = '';
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.createForm();
-  }
-
-  ngAfterViewInit(): void {
-    this.authService.authState.subscribe({
-      next: (state) => this.displayAuthState(state),
+    this.authService.registerUserState$.subscribe({
+      next: (state) => this.displayRegisterState(state),
     });
   }
 
@@ -40,7 +39,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   onRegister() {
-    this.authService.authState.next(AuthState.REGISTER_LOADING);
+    this.clearError();
+    this.authService.registerUserState$.next({ state: State.LOADING });
 
     this.authService.registerUser({
       id: 0,
@@ -50,11 +50,47 @@ export class LoginComponent implements OnInit, AfterViewInit {
     });
   }
 
-  displayAuthState(value: string) {
-    // const loadingButton = this.loadingButton.nativeElement as HTMLButtonElement;
+  displayRegisterState(response: AuthResponse) {
     const registerButton = this.registerButton.nativeElement as HTMLButtonElement;
-    if (value === AuthState.REGISTER_LOADING) registerButton.classList.add('loading');
-    if (value === AuthState.REGISTER_ERROR) registerButton.classList.remove('loading');
-    if (value === AuthState.REGISTER_SUCCESS) registerButton.classList.remove('loading');
+
+    switch (response.state) {
+      case State.LOADING:
+        registerButton.classList.add('loading');
+        break;
+      case State.ERROR:
+        registerButton.classList.remove('loading');
+        this.displayRegisterError(response.errorCode!!);
+        break;
+      case State.SUCCESS:
+        registerButton.classList.remove('loading');
+        this.displayRegisterSuccess();
+        this.loginForm.reset();
+        this.registerButton.nativeElement.blur();
+        break;
+    }
+  }
+
+  displayRegisterError(errorCode: number) {
+    switch (errorCode) {
+      case 0:
+        this.errorMsg = 'Brak połączenia z serwerem';
+        break;
+      case 400:
+        this.errorMsg = 'Konto pod tym adresem email już istnieje';
+        break;
+    }
+  }
+
+  displayRegisterSuccess() {
+    this.successMsg = 'Konto utworzone prawidłowo. Możesz się zalogować';
+
+    setTimeout(() => {
+      this.clearError();
+    }, 2500);
+  }
+
+  clearError() {
+    this.successMsg = '';
+    this.errorMsg = '';
   }
 }
