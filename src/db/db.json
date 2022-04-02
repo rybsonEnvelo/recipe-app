@@ -120,9 +120,7 @@
     },
     {
       "name": "Nazwa przepisy",
-      "description": [
-        "safdasfasdfdasfasd"
-      ],
+      "description": ["safdasfasdfdasfasd"],
       "rating": 4,
       "ingredients": [
         {

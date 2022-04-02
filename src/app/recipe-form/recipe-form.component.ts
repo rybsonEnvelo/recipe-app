@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { ModalService } from '../modal/modal.service';
 import { FormService } from './form.service';
 
@@ -9,7 +8,7 @@ import { FormService } from './form.service';
   templateUrl: './recipe-form.component.html',
   styleUrls: ['./recipe-form.component.scss'],
 })
-export class RecipeFormComponent implements OnInit, OnDestroy {
+export class RecipeFormComponent implements OnInit {
   form!: FormGroup;
   ingredientFormGroup(): FormGroup {
     return this.formBuilder.group({
@@ -17,11 +16,6 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
       value: ['', [Validators.required]],
     });
   }
-
-  //////modal
-  @ViewChild('modal', { read: ViewContainerRef })
-  sub!: Subscription;
-  //////////////
 
   get ingredients() {
     return this.form.get('ingredients') as FormArray;
@@ -38,10 +32,6 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.createForm();
-  }
-
-  ngOnDestroy(): void {
-    if (this.sub) this.sub.unsubscribe();
   }
 
   createForm() {
@@ -68,7 +58,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.sub = this.modalService.openModal().subscribe();
+    this.modalService.openModal().subscribe();
 
     let recipeTemp = {
       name: this.form.get('name')!.value,

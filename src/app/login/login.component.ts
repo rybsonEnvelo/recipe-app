@@ -5,6 +5,7 @@ import { Role } from '../shared/enums/Role';
 import { AuthResponse } from '../shared/interfaces/AuthResponse';
 import { AuthService } from '../shared/services/auth.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,14 +22,14 @@ export class LoginComponent implements OnInit {
   registerSubscription!: Subscription;
   loginSubscription!: Subscription;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.createForm();
-    this.registerSubscription = this.authService.registerUserState$.subscribe({
+    this.registerSubscription = this.authService.registerUserState.subscribe({
       next: (state) => this.displayRegisterState(state),
     });
-    this.loginSubscription = this.authService.loginUserState$.subscribe({
+    this.loginSubscription = this.authService.loginUserState.subscribe({
       next: (state) => this.displayLoginState(state),
     });
   }
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit {
   // register
   onRegister() {
     this.clearErrors();
-    this.authService.registerUserState$.next({ state: State.LOADING });
+    this.authService.registerUserState.next({ state: State.LOADING });
 
     this.authService.registerUser({
       email: this.loginForm!.get('email')!.value,
@@ -98,7 +99,7 @@ export class LoginComponent implements OnInit {
 
   //login
   onLogin() {
-    this.authService.loginUserState$.next({ state: State.LOADING });
+    this.authService.loginUserState.next({ state: State.LOADING });
 
     this.authService.loginUser({
       email: this.loginForm!.get('email')!.value,
@@ -112,18 +113,10 @@ export class LoginComponent implements OnInit {
     switch (response.state) {
       case State.LOADING:
         loginButton.classList.add('loading');
-        console.warn(State.LOADING);
-
         break;
       case State.ERROR:
         loginButton.classList.remove('loading');
         this.displayLoginError(response.errorCode!!);
-        console.warn(State.ERROR);
-
-        break;
-      case State.SUCCESS:
-        //przenieść do panelu głównego w zelżności od konta
-        console.warn(State.SUCCESS);
         break;
     }
   }

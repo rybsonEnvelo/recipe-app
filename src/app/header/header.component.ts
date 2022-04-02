@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { take } from 'rxjs';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  isLogged = false;
 
-  constructor() { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    this.authService.authorized$.subscribe((isLogged) => {
+      this.isLogged = isLogged;
+    });
   }
-
 }

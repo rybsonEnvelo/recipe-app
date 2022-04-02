@@ -2,9 +2,11 @@
 @use "../../sass/mixins.scss" as *;
 
 :host {
+  height: 10vh;
   @include flex(row, unset, center, center);
   padding: 0 6rem;
   background-color: $color-background--light;
+  position: relative;
 
   &:hover {
     a ion-icon {
@@ -14,9 +16,11 @@
   }
 }
 
-a,
-app-logout {
-  margin-left: auto;
+app-user-panel {
+  position: absolute;
+  top: 50%;
+  right: 6rem;
+  transform: translateY(-50%);
 }
 
 a {
