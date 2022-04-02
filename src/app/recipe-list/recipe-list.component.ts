@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { tap } from 'rxjs';
-import { Recipe } from '../interfaces/Recipe';
-import { SortOption } from '../interfaces/SortOption';
+import { Recipe } from '../shared/interfaces/Recipe';
+import { SortOption } from '../shared/interfaces/SortOption';
 import { RecipeListService } from './recipe-list.service';
 import { SortService } from './sort.service';
 

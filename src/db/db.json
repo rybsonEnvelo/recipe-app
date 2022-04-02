@@ -133,5 +133,11 @@
       "id": 5
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": 1,
+      "email": "x@x.pl",
+      "password": "123123"
+    }
+  ]
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../shared/auth.service';
+import { Role } from '../shared/enums/Role';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -26,5 +27,15 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log(this.loginForm.value);
+    console.log('ASd');
+  }
+
+  onRegister() {
+    this.authService.registerUser({
+      id: 0,
+      email: this.loginForm!.get('email')!.value,
+      password: this.loginForm!.get('password')!.value,
+      role: Role.AUTHOR
+    });
   }
 }

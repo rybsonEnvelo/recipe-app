@@ -8,7 +8,7 @@
 }
 
 form {
-  padding: 3rem 4rem;
+  padding: 3rem clamp(1rem, 4vw, 4rem);
   @include flex(column, 1rem, center, center);
   background-color: $color-background--light;
   transform: translateY(-20%);

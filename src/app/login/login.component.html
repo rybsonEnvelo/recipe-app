@@ -1,6 +1,6 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <div class="input-with-icon-container">
-    <input formControlName="email" type="email" placeholder="Podaj adres email" />
+    <input appTrimInput formControlName="email" type="email" placeholder="Podaj adres email" />
     <ion-icon name="person-outline"></ion-icon>
     <p *ngIf="loginForm.controls['email'].dirty && loginForm.controls['email'].errors?.['pattern']" class="msg--error">
       Musisz podać adres email
@@ -8,7 +8,7 @@
   </div>
 
   <div class="input-with-icon-container">
-    <input formControlName="password" type="password" placeholder="Podaj hasło" />
+    <input appTrimInput formControlName="password" type="password" placeholder="Podaj hasło" />
     <ion-icon name="lock-closed-outline"></ion-icon>
     <p
       *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].errors?.['minlength']"
@@ -21,7 +21,9 @@
 
   <div>
     <button type="submit" [disabled]="!loginForm.valid" class="button--success">Zaloguj się</button>
-    <button type="button" [disabled]="!loginForm.valid" class="button--warning">Zarejestruj się</button>
+    <button type="button" (click)="onRegister()" [disabled]="!loginForm.valid" class="button--warning">
+      Zarejestruj się
+    </button>
   </div>
 
   <a href="#">Nie pamiętasz hasła?</a>
