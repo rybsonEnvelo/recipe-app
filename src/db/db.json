@@ -151,6 +151,30 @@
       "password": "$2a$10$UXTFmRVpFbTYR.cKa/LQfuop2d79P9sknHA4LuXCQYwGCXVU8vICK",
       "role": "author",
       "id": 3
+    },
+    {
+      "email": "mariusz@asd.pl",
+      "password": "$2a$10$ks22SAB013JhE4F.GgGNtezB4TSrFg0IfH89l6Mbf9O01G3M1XI9i",
+      "role": "author",
+      "id": 4
+    },
+    {
+      "email": "mar@mar.pl",
+      "password": "$2a$10$Map4V/Ohc00euiUlyiSlIOyrR7TJO7rieB9CjX6jyrq7aqg421Z5i",
+      "role": "author",
+      "id": 5
+    },
+    {
+      "email": "mar@mar.pll",
+      "password": "$2a$10$RrpPxRUgiqQaN4tHdUriU.ovEVJ7NUV9ntgM0rT.D3GVCq4KHmAay",
+      "role": "author",
+      "id": 6
+    },
+    {
+      "email": "u@p.pl",
+      "password": "$2a$10$kzsrXrlIQduvu9S.lROQ.eE71eVHZXOlCOTmnYut5WPLbACAjFZ1S",
+      "role": "author",
+      "id": 7
     }
   ]
 }
