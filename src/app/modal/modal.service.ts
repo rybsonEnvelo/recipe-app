@@ -31,7 +31,7 @@ export class ModalService {
   }
 
   confirm(rating: number) {
-    this.formService.recipeRating.next(rating);
+    this.formService.emitRecipeRating(rating);
     this.closeModal();
   }
 }

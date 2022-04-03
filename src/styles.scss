@@ -96,7 +96,38 @@ button {
   }
 }
 
+.button--warning {
+  transition: background-color 100ms;
+  background-color: $color-orange;
+
+  &:hover {
+    background-color: $color-orange--light;
+  }
+}
+
 .msg--error {
   font-size: 1.2rem;
   color: $color-red;
+}
+
+.msg--success {
+  font-size: 1.2rem;
+  color: $color-green;
+}
+
+.input-with-icon-container {
+  position: relative;
+  width: 100%;
+
+  input {
+    width: max(16rem, 100%);
+    padding: 0.7rem 1rem 0.7rem 3.5rem;
+  }
+
+  ion-icon {
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    transform: translateY(50%);
+  }
 }

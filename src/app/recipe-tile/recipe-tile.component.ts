@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Recipe } from '../interfaces/Recipe';
+import { Component, Input } from '@angular/core';
+import { Recipe } from '../shared/interfaces/Recipe';
 import { ShareService } from '../recipe-details/share.service';
 
 @Component({
@@ -7,12 +7,10 @@ import { ShareService } from '../recipe-details/share.service';
   templateUrl: './recipe-tile.component.html',
   styleUrls: ['./recipe-tile.component.scss'],
 })
-export class RecipeTileComponent implements OnInit {
+export class RecipeTileComponent {
   @Input() recipe!: Recipe;
 
   constructor(private shareService: ShareService) {}
-
-  ngOnInit(): void {}
 
   displayDetails() {
     this.shareService.emitRecipe(this.recipe);

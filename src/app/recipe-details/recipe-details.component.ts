@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ShareService } from './share.service';
 
 @Component({
@@ -6,10 +6,8 @@ import { ShareService } from './share.service';
   templateUrl: './recipe-details.component.html',
   styleUrls: ['./recipe-details.component.scss'],
 })
-export class RecipeDetailsComponent implements OnInit {
-  recipe$ = this.shareService.captureRecipe();
+export class RecipeDetailsComponent {
+  recipe$ = this.shareService.recipe$;
 
   constructor(private shareService: ShareService) {}
-
-  ngOnInit(): void {}
 }

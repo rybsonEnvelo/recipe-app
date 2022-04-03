@@ -3,6 +3,7 @@
 $font-primary: "Poppins", sans-serif;
 $font-size--default: clamp(1.2rem, 1.5vw, 1.5rem);
 $font-size--xs: clamp(1.2rem, 1.5vw, 1.4rem);
+$font-size--xxs: clamp(1.1rem, 1.5vw, 1.2rem);
 
 $color-background--dark: #f2f2f3;
 $color-background--light: #ffffff;
@@ -12,5 +13,7 @@ $color-red: #e03a45;
 $color-red--light: #e34e58;
 $color-violet: #894ba9;
 $color-orange: #f99f38;
+$color-orange--light: #faa94c;
+$color-blue: #484bff;
 $color-text--light: #dbdfea;
 $color-text--dark: #364a63;

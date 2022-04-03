@@ -1,28 +1,20 @@
-import {
-  AfterContentInit,
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-  QueryList,
-  ViewChildren,
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnDestroy, Output, QueryList, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
-export class ModalComponent {
+export class ModalComponent implements OnDestroy {
   @ViewChildren('star') stars = new QueryList<ElementRef>();
   @Output() closeEvent = new EventEmitter();
   @Output() confirmEvent = new EventEmitter<number>();
-  rating: number = 0;
+  private rating: number = 0;
 
-  constructor() {}
+  ngOnDestroy(): void {
+    this.closeEvent.unsubscribe();
+    this.confirmEvent.unsubscribe();
+  }
 
   closeModal() {
     this.closeEvent.emit();

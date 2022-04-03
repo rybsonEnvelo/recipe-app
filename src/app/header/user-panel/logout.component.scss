@@ -1,0 +1,21 @@
+@use "../../../sass/variables.scss" as *;
+@use "../../../sass/mixins.scss" as *;
+
+:host {
+  background-color: $color-background--light;
+}
+
+button {
+  background-color: inherit;
+  cursor: pointer;
+
+  ion-icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    transition: transform 200ms;
+
+    &:hover {
+      color: $color-violet;
+    }
+  }
+}

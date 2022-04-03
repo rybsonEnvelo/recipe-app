@@ -3,14 +3,17 @@
 
 :host {
   overflow-y: auto;
+  height: 100%;
 }
 
 .container {
+  height: 100%;
   @include flex(column, 1.5rem, unset, unset);
   padding-right: 0.5rem;
 }
 
 form {
+  height: 100%;
   @include flex(column, 2rem, unset, unset);
 
   input,

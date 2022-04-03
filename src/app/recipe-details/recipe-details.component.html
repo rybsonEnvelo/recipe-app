@@ -2,7 +2,7 @@
   <section class="container">
     <h2>{{ recipe.name | firstLetterUpperCase }}</h2>
     <div class="stars">
-      <ion-icon *ngFor="let star of recipe.rating | multiplyStars" name="star"></ion-icon>
+      <ion-icon *ngFor="let star of recipe.rating!! | multiplyStars" name="star"></ion-icon>
     </div>
 
     <div class="description">

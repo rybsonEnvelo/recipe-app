@@ -10,18 +10,14 @@ import { FormService } from './form.service';
   styleUrls: ['./recipe-form.component.scss'],
 })
 export class RecipeFormComponent implements OnInit, OnDestroy {
-  form!: FormGroup;
-  ingredientFormGroup(): FormGroup {
+  public form!: FormGroup;
+  private ingredientFormGroup(): FormGroup {
     return this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       value: ['', [Validators.required]],
     });
   }
-
-  //////modal
-  @ViewChild('modal', { read: ViewContainerRef })
-  sub!: Subscription;
-  //////////////
+  private isReadySubscription!: Subscription;
 
   get ingredients() {
     return this.form.get('ingredients') as FormArray;
@@ -38,10 +34,14 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.createForm();
+
+    this.isReadySubscription = this.formService.isReady$.subscribe((isReady) => {
+      if (isReady) this.clear();
+    });
   }
 
   ngOnDestroy(): void {
-    if (this.sub) this.sub.unsubscribe();
+    this.isReadySubscription.unsubscribe();
   }
 
   createForm() {
@@ -68,7 +68,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.sub = this.modalService.openModal().subscribe();
+    this.modalService.openModal().subscribe();
 
     let recipeTemp = {
       name: this.form.get('name')!.value,
@@ -76,6 +76,6 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
       ingredients: this.ingredients.value,
     };
 
-    this.formService.recipe.next(recipeTemp);
+    this.formService.emitRecipe(recipeTemp);
   }
 }

@@ -14,22 +14,6 @@
   @include flex(row, 1.5rem, unset, unset);
   margin-left: auto;
   padding-right: 0.5rem;
-
-  .input-container {
-    position: relative;
-
-    input {
-      width: max(16rem, 100%);
-      padding: 0.7rem 1rem 0.7rem 3.5rem;
-    }
-
-    ion-icon {
-      position: absolute;
-      left: 1rem;
-      top: 0;
-      transform: translateY(50%);
-    }
-  }
 }
 
 .recipe-list-container {

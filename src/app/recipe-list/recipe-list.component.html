@@ -1,5 +1,5 @@
 <form [formGroup]="filterForm" class="filter-container">
-  <div class="input-container">
+  <div class="input-with-icon-container">
     <input formControlName="search" type="text" placeholder="Szukaj..." />
     <ion-icon name="search-outline"></ion-icon>
   </div>
@@ -12,5 +12,3 @@
 <div class="recipe-list-container">
   <app-recipe-tile [recipe]="recipe" *ngFor="let recipe of recipes"></app-recipe-tile>
 </div>
-
-{{ filterForm.value | json }}

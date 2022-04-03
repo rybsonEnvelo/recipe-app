@@ -1,25 +1,36 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, ReplaySubject, switchMap, tap } from 'rxjs';
-import { Ingredient } from '../interfaces/Ingredient';
-import { Recipe } from '../interfaces/Recipe';
+import { BehaviorSubject, ReplaySubject, Subject, switchMap, tap } from 'rxjs';
+import { Recipe } from '../shared/interfaces/Recipe';
 import { RecipeListService } from '../recipe-list/recipe-list.service';
-import { RecipeApiService } from '../shared/services/recipe-api.service';
+import { ApiService } from '../shared/services/api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormService {
-  recipeRating = new ReplaySubject<number>(1);
-  recipe = new BehaviorSubject<{ name: string; description: string[]; ingredients: Ingredient[] } | null>(null);
-  rating: number = 0;
+  private recipeRating = new ReplaySubject<number>(1);
+  private recipe = new BehaviorSubject<Recipe | null>(null);
+  private isReady = new BehaviorSubject<boolean>(false);
 
-  constructor(private recipeApiService: RecipeApiService, private RecipeListService: RecipeListService) {
+  get isReady$() {
+    return this.isReady.asObservable();
+  }
+
+  constructor(private apiService: ApiService, private recipeListService: RecipeListService) {
     this.recipeRating
       .pipe(
-        tap(console.warn),
+        tap(() => this.isReady.next(true)),
         switchMap((recipeRating) => this.addRecipe(this.generateRecipeToPost(recipeRating)))
       )
       .subscribe();
+  }
+
+  emitRecipe(emitedRecipe: Recipe) {
+    this.recipe.next(emitedRecipe);
+  }
+
+  emitRecipeRating(emitedRating: number) {
+    this.recipeRating.next(emitedRating);
   }
 
   splitToArray(value: string) {
@@ -27,7 +38,7 @@ export class FormService {
   }
 
   addRecipe(recipe: Recipe) {
-    return this.recipeApiService.addRecipe(recipe).pipe(switchMap(() => this.RecipeListService.getRecipes()));
+    return this.apiService.addRecipe(recipe).pipe(switchMap(() => this.recipeListService.getRecipes()));
   }
 
   generateRecipeToPost(rating: number) {
@@ -36,7 +47,6 @@ export class FormService {
       description: this.recipe.value!.description,
       rating: rating,
       ingredients: this.recipe.value!.ingredients,
-      id: 0,
     };
   }
 }

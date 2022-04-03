@@ -1,0 +1,42 @@
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+  <div class="input-with-icon-container">
+    <input
+      appTrimInput
+      (click)="clearErrors()"
+      formControlName="email"
+      type="email"
+      maxlength="50"
+      placeholder="Podaj adres email"
+    />
+    <ion-icon name="person-outline"></ion-icon>
+    <p *ngIf="loginForm.controls['email'].dirty && loginForm.controls['email'].errors?.['pattern']" class="msg--error">
+      Musisz podać adres email
+    </p>
+  </div>
+
+  <div class="input-with-icon-container">
+    <input appTrimInput formControlName="password" type="password" maxlength="20" placeholder="Podaj hasło" />
+    <ion-icon name="lock-closed-outline"></ion-icon>
+    <p
+      *ngIf="loginForm.controls['password'].dirty && loginForm.controls['password'].errors?.['minlength']"
+      class="msg--error"
+    >
+      Hasło musi mieć minimum 6 znaków
+    </p>
+    <p *ngIf="errorMsg" class="msg--error">{{ errorMsg }}</p>
+    <p *ngIf="successMsg" class="msg--success">{{ successMsg }}</p>
+  </div>
+
+  <div>
+    <button #loginButton type="submit" [disabled]="!loginForm.valid" class="button--success">
+      <img src="../../assets/loader.svg" alt="Logowanie" />
+      <p>Zaloguj się</p>
+    </button>
+    <button #registerButton type="button" (click)="onRegister()" [disabled]="!loginForm.valid" class="button--warning">
+      <img src="../../assets/loader.svg" alt="Rejestrowanie" />
+      <p>Zarejestruj się</p>
+    </button>
+  </div>
+
+  <a href="#">Nie pamiętasz hasła?</a>
+</form>

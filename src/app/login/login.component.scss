@@ -1,0 +1,54 @@
+@use "../../sass/mixins.scss" as *;
+@use "../../sass/variables.scss" as *;
+
+:host {
+  height: 90vh;
+  @include flex(row, unset, center, center);
+  background-color: $color-background--dark;
+}
+
+form {
+  width: min(40rem, 100% - 2rem);
+  padding: 3rem clamp(1rem, 4vw, 4rem);
+  @include flex(column, 1rem, center, center);
+  background-color: $color-background--light;
+  transform: translateY(-20%);
+
+  div:last-of-type {
+    width: 100%;
+    @include flex(row, 1rem, unset, center);
+    margin-top: 1rem;
+  }
+
+  a {
+    font-size: $font-size--xxs;
+    color: $color-text--dark;
+  }
+
+  button {
+    position: relative;
+
+    p {
+      visibility: visible;
+    }
+
+    img {
+      position: absolute;
+      width: 4rem;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      visibility: hidden;
+    }
+  }
+
+  .loading {
+    p {
+      visibility: hidden;
+    }
+
+    img {
+      visibility: visible;
+    }
+  }
+}
