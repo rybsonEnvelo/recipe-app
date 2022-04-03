@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { tap } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Recipe } from '../shared/interfaces/Recipe';
 import { SortOption } from '../shared/interfaces/SortOption';
 import { RecipeListService } from './recipe-list.service';
@@ -12,9 +11,9 @@ import { SortService } from './sort.service';
   styleUrls: ['./recipe-list.component.scss'],
 })
 export class RecipeListComponent implements OnInit {
-  sortOptions: SortOption[] = this.sortService.getSortOptions();
-  recipes: Recipe[] = [];
-  filterForm!: FormGroup;
+  public sortOptions: SortOption[] = this.sortService.getSortOptions();
+  public recipes: Recipe[] = [];
+  public filterForm!: FormGroup;
 
   constructor(
     private sortService: SortService,

@@ -5,5 +5,5 @@ export interface Recipe {
   name: string;
   description: string[];
   ingredients: Ingredient[];
-  rating: number;
+  rating?: number;
 }

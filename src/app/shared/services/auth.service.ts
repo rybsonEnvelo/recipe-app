@@ -12,8 +12,8 @@ import { ApiService } from './api.service';
 export class AuthService {
   public regex =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  public registerUserState = new Subject<AuthResponse>();
-  public loginUserState = new Subject<AuthResponse>();
+  private registerUserState = new Subject<AuthResponse>();
+  private loginUserState = new Subject<AuthResponse>();
   private authorized!: BehaviorSubject<boolean>;
   private user = new BehaviorSubject<User | null>(null);
 
@@ -25,11 +25,21 @@ export class AuthService {
     return this.user.asObservable();
   }
 
+  get register$() {
+    return this.registerUserState.asObservable();
+  }
+
+  get login$() {
+    return this.loginUserState.asObservable();
+  }
+
   constructor(private apiService: ApiService, private router: Router) {
     this.authorized = new BehaviorSubject(!!localStorage.getItem('user'));
   }
 
   registerUser(user: User) {
+    this.registerUserState.next({ state: State.LOADING });
+
     return this.apiService.registerUser(user).subscribe({
       error: (error) => this.registerUserState.next({ state: State.ERROR, errorCode: error.status }),
       next: () => this.registerUserState.next({ state: State.SUCCESS }),
@@ -37,25 +47,24 @@ export class AuthService {
   }
 
   loginUser(user: User) {
-    return this.apiService
-      .loginUser(user)
-      .pipe(take(1))
-      .subscribe({
-        error: (error) => this.loginUserState.next({ state: State.ERROR, errorCode: error.status }),
-        next: (response) => {
-          this.loginUserState.next({ state: State.SUCCESS });
-          localStorage.setItem('user', JSON.stringify(response));
-          this.authorized.next(true);
-          this.router.navigate(['main']);
-          this.user.next(response);
-        },
-      });
+    this.loginUserState.next({ state: State.LOADING });
+
+    return this.apiService.loginUser(user).subscribe({
+      error: (error) => this.loginUserState.next({ state: State.ERROR, errorCode: error.status }),
+      next: (response) => {
+        localStorage.setItem('user', JSON.stringify(response));
+        this.authorized.next(true);
+        this.user.next(response);
+        this.loginUserState.next({ state: State.SUCCESS });
+        this.router.navigate(['main']);
+      },
+    });
   }
 
   logOutUser() {
-    localStorage.removeItem('user');
-    this.router.navigate(['auth']);
     this.authorized.next(false);
     this.user.next(null);
+    localStorage.removeItem('user');
+    this.router.navigate(['auth']);
   }
 }

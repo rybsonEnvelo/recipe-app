@@ -1,4 +1,4 @@
 <button class="button--primary" (click)="displayDetails()">
   <p>{{ recipe.name | firstLetterUpperCase }}</p>
-  <ion-icon *ngFor="let i of recipe.rating | multiplyStars" name="star"></ion-icon>
+  <ion-icon *ngFor="let i of recipe.rating!! | multiplyStars" name="star"></ion-icon>
 </button>

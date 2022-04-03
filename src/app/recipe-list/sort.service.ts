@@ -5,7 +5,7 @@ import { SortOption } from '../shared/interfaces/SortOption';
   providedIn: 'root',
 })
 export class SortService {
-  getSortOptions(): SortOption[] {
+  public getSortOptions(): SortOption[] {
     return [
       {
         label: 'Sortuj',

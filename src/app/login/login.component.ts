@@ -1,18 +1,17 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { State } from '../shared/enums/State';
 import { Role } from '../shared/enums/Role';
 import { AuthResponse } from '../shared/interfaces/AuthResponse';
 import { AuthService } from '../shared/services/auth.service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
   @ViewChild('loginButton') loginButton!: ElementRef;
   @ViewChild('registerButton') registerButton!: ElementRef;
   @ViewChild('emailInput') emailInput!: ElementRef;
@@ -22,16 +21,21 @@ export class LoginComponent implements OnInit {
   registerSubscription!: Subscription;
   loginSubscription!: Subscription;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.createForm();
-    this.registerSubscription = this.authService.registerUserState.subscribe({
+    this.registerSubscription = this.authService.register$.subscribe({
       next: (state) => this.displayRegisterState(state),
     });
-    this.loginSubscription = this.authService.loginUserState.subscribe({
+
+    this.loginSubscription = this.authService.login$.subscribe({
       next: (state) => this.displayLoginState(state),
     });
+  }
+
+  ngOnDestroy(): void {
+    [this.registerSubscription, this.loginSubscription].forEach((subscription) => subscription.unsubscribe);
   }
 
   createForm() {
@@ -49,7 +53,6 @@ export class LoginComponent implements OnInit {
   // register
   onRegister() {
     this.clearErrors();
-    this.authService.registerUserState.next({ state: State.LOADING });
 
     this.authService.registerUser({
       email: this.loginForm!.get('email')!.value,
@@ -64,6 +67,7 @@ export class LoginComponent implements OnInit {
     switch (response.state) {
       case State.LOADING:
         registerButton.classList.add('loading');
+        console.warn('loading');
         break;
       case State.ERROR:
         registerButton.classList.remove('loading');
@@ -91,7 +95,6 @@ export class LoginComponent implements OnInit {
 
   displayRegisterSuccess() {
     this.successMsg = 'Konto utworzone prawidłowo. Możesz się zalogować';
-
     setTimeout(() => {
       this.clearErrors();
     }, 2500);
@@ -99,8 +102,6 @@ export class LoginComponent implements OnInit {
 
   //login
   onLogin() {
-    this.authService.loginUserState.next({ state: State.LOADING });
-
     this.authService.loginUser({
       email: this.loginForm!.get('email')!.value,
       password: this.loginForm!.get('password')!.value,

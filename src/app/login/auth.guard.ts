@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { take, tap } from 'rxjs';
 import { AuthService } from '../shared/services/auth.service';
 
@@ -9,7 +9,7 @@ import { AuthService } from '../shared/services/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot) {
+  canActivate() {
     return this.authService.authorized$.pipe(
       take(1),
       tap((isLogged) => {

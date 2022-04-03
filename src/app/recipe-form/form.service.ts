@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, ReplaySubject, switchMap, tap } from 'rxjs';
-import { Ingredient } from '../shared/interfaces/Ingredient';
+import { BehaviorSubject, ReplaySubject, Subject, switchMap, tap } from 'rxjs';
 import { Recipe } from '../shared/interfaces/Recipe';
 import { RecipeListService } from '../recipe-list/recipe-list.service';
 import { ApiService } from '../shared/services/api.service';
@@ -9,17 +8,29 @@ import { ApiService } from '../shared/services/api.service';
   providedIn: 'root',
 })
 export class FormService {
-  recipeRating = new ReplaySubject<number>(1);
-  recipe = new BehaviorSubject<{ name: string; description: string[]; ingredients: Ingredient[] } | null>(null);
-  rating: number = 0;
+  private recipeRating = new ReplaySubject<number>(1);
+  private recipe = new BehaviorSubject<Recipe | null>(null);
+  private isReady = new BehaviorSubject<boolean>(false);
+
+  get isReady$() {
+    return this.isReady.asObservable();
+  }
 
   constructor(private apiService: ApiService, private recipeListService: RecipeListService) {
     this.recipeRating
       .pipe(
-        tap(console.warn),
+        tap(() => this.isReady.next(true)),
         switchMap((recipeRating) => this.addRecipe(this.generateRecipeToPost(recipeRating)))
       )
       .subscribe();
+  }
+
+  emitRecipe(emitedRecipe: Recipe) {
+    this.recipe.next(emitedRecipe);
+  }
+
+  emitRecipeRating(emitedRating: number) {
+    this.recipeRating.next(emitedRating);
   }
 
   splitToArray(value: string) {

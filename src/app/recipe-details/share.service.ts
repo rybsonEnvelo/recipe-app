@@ -6,16 +6,13 @@ import { Recipe } from 'src/app/shared/interfaces/Recipe';
   providedIn: 'root',
 })
 export class ShareService {
-  private recipeSubject = new Subject<Recipe>();
+  private recipe = new Subject<Recipe>();
 
-  constructor() {}
-
-  emitRecipe(recipe: Recipe) {
-    console.log(recipe);
-    return this.recipeSubject.next(recipe);
+  get recipe$() {
+    return this.recipe.asObservable();
   }
 
-  captureRecipe() {
-    return this.recipeSubject.asObservable();
+  emitRecipe(recipe: Recipe) {
+    return this.recipe.next(recipe);
   }
 }
