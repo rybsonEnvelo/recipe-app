@@ -5,6 +5,8 @@ import { AuthComponent } from './auth/auth.component';
 import { MainComponent } from './main/main.component';
 import { RecipeFormComponent } from './recipe/recipe-form/recipe-form.component';
 import { RecipeDetailsComponent } from './recipe/recipe-details/recipe-details.component';
+import { RoleGuard } from './shared/guards/role.guard';
+import { Role } from './shared/enums/Role.enum';
 
 @NgModule({
   exports: [RouterModule],
@@ -22,6 +24,8 @@ import { RecipeDetailsComponent } from './recipe/recipe-details/recipe-details.c
           {
             path: 'form',
             component: RecipeFormComponent,
+            canActivate: [RoleGuard],
+            data: { roles: [Role.AUTHOR] },
           },
           {
             path: 'details',
