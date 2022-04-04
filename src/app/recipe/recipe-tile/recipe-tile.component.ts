@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Recipe } from '../../shared/interfaces/Recipe.model';
 import { ShareService } from '../recipe-details/share.service';
 
@@ -10,9 +11,10 @@ import { ShareService } from '../recipe-details/share.service';
 export class RecipeTileComponent {
   @Input() recipe!: Recipe;
 
-  constructor(private shareService: ShareService) {}
+  constructor(private shareService: ShareService, private router: Router) {}
 
   displayDetails() {
     this.shareService.emitRecipe(this.recipe);
+    this.router.navigate(['main/details']);
   }
 }

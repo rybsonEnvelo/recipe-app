@@ -20,16 +20,14 @@ export class RecipeListService {
   }
 
   getRecipes() {
-    console.log(this.userService.getUserRole());
-
-    if (this.userService.getUserRole() === Role.AUTHOR) {
-      return this.apiService.getRecipes().pipe(
+    if (this.userService.getUserRoleFormLocalStorage() === Role.AUTHOR) {
+      return this.apiService.getRecipesByUserId(this.userService.getUserIdFormLocalStorage()).pipe(
         tap((recipes) => {
           this.recipes.next(recipes);
         })
       );
     } else
-      return this.apiService.getRecipesByUserId(this.userService.getUserId()).pipe(
+      return this.apiService.getRecipes().pipe(
         tap((recipes) => {
           this.recipes.next(recipes);
         })

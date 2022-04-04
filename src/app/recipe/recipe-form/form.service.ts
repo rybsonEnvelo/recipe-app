@@ -70,7 +70,7 @@ export class FormService {
       description: this.recipe.value!.description,
       rating: rating,
       ingredients: this.recipe.value!.ingredients,
-      authorId: this.userService.getUserId(),
+      authorId: this.userService.getUserIdFormLocalStorage(),
     };
   }
 }
