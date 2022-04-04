@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Recipe } from '../shared/interfaces/Recipe';
-import { SortOption } from '../shared/interfaces/SortOption';
+import { Recipe } from '../../shared/interfaces/Recipe.model';
+import { SortOption } from '../../shared/interfaces/SortOption.model';
 import { RecipeListService } from './recipe-list.service';
 import { SortService } from './sort.service';
 

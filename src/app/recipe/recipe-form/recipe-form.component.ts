@@ -11,12 +11,6 @@ import { FormService } from './form.service';
 })
 export class RecipeFormComponent implements OnInit, OnDestroy {
   public form!: FormGroup;
-  private ingredientFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      value: ['', [Validators.required]],
-    });
-  }
   private isReadySubscription!: Subscription;
 
   get ingredients() {
@@ -24,10 +18,9 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   }
 
   constructor(
-    private formBuilder: FormBuilder,
+    public viewContainerRef: ViewContainerRef,
     private formService: FormService,
-    private modalService: ModalService,
-    public viewContainerRef: ViewContainerRef
+    private modalService: ModalService
   ) {
     this.modalService.formRef = this.viewContainerRef;
   }
@@ -45,15 +38,11 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   }
 
   createForm() {
-    this.form = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      description: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(1600)]],
-      ingredients: this.formBuilder.array([this.ingredientFormGroup()]),
-    });
+    this.form = this.formService.createForm();
   }
 
   addIngredient() {
-    this.ingredients.push(this.ingredientFormGroup());
+    this.ingredients.push(this.formService.ingredientFormGroup());
   }
 
   removeIngredient(index: number) {
@@ -64,7 +53,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   clear() {
     this.form.reset();
     this.ingredients.clear();
-    this.ingredients.insert(0, this.ingredientFormGroup());
+    this.ingredients.insert(0, this.formService.ingredientFormGroup());
   }
 
   onSubmit() {

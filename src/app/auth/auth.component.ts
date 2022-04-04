@@ -1,25 +1,25 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { State } from '../shared/enums/State';
-import { Role } from '../shared/enums/Role';
-import { AuthResponse } from '../shared/interfaces/AuthResponse';
+import { State } from '../shared/enums/State.enum';
+import { Role } from '../shared/enums/Role.enum';
+import { AuthResponse } from '../shared/interfaces/AuthResponse.model';
 import { AuthService } from '../shared/services/auth.service';
 import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.scss'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class AuthComponent implements OnInit, OnDestroy {
   @ViewChild('loginButton') loginButton!: ElementRef;
   @ViewChild('registerButton') registerButton!: ElementRef;
   @ViewChild('emailInput') emailInput!: ElementRef;
-  loginForm!: FormGroup;
-  errorMsg: string = '';
-  successMsg: string = '';
-  registerSubscription!: Subscription;
-  loginSubscription!: Subscription;
+  public loginForm!: FormGroup;
+  public errorMsg: string = '';
+  public successMsg: string = '';
+  private registerSubscription!: Subscription;
+  private loginSubscription!: Subscription;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
 

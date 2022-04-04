@@ -1,4 +1,4 @@
-import { State } from '../enums/State';
+import { State } from '../enums/State.enum';
 
 export interface AuthResponse {
   state: State;

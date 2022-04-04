@@ -7,7 +7,7 @@ import { ShareService } from './share.service';
   styleUrls: ['./recipe-details.component.scss'],
 })
 export class RecipeDetailsComponent {
-  recipe$ = this.shareService.recipe$;
+  public recipe$ = this.shareService.recipe$;
 
   constructor(private shareService: ShareService) {}
 }
