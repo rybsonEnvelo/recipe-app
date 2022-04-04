@@ -52,9 +52,9 @@ export class AuthService {
     return this.apiService.loginUser(user).subscribe({
       error: (error) => this.loginUserState.next({ state: State.ERROR, errorCode: error.status }),
       next: (response) => {
-        localStorage.setItem('user', JSON.stringify(response));
+        localStorage.setItem('user', JSON.stringify(response.user));
         this.authorized.next(true);
-        this.user.next(response);
+        this.user.next(response.user);
         this.loginUserState.next({ state: State.SUCCESS });
         this.router.navigate(['main']);
       },

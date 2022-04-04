@@ -134,6 +134,19 @@
       ],
       "id": 5,
       "authorId": 2
+    },
+    {
+      "name": "euklali",
+      "description": ["123123213"],
+      "rating": 1,
+      "ingredients": [
+        {
+          "name": "23232",
+          "value": "32323"
+        }
+      ],
+      "authorId": 1,
+      "id": 6
     }
   ],
   "users": [
@@ -146,7 +159,7 @@
     {
       "email": "z@z.pl",
       "password": "$2a$10$9pWzIXPj17RYeeB.5Gz35.2kxbUeuq/tFKtU1GAZQaNPOsAU.3Sle",
-      "role": "author",
+      "role": "user",
       "id": 2
     }
   ]

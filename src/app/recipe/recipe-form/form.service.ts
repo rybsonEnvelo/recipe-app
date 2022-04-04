@@ -5,6 +5,7 @@ import { RecipeListService } from '../recipe-list/recipe-list.service';
 import { ApiService } from '../../shared/services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ingredient } from 'src/app/shared/interfaces/Ingredient.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,7 @@ export class FormService {
   constructor(
     private apiService: ApiService,
     private recipeListService: RecipeListService,
+    private userService: UserService,
     private formBuilder: FormBuilder
   ) {
     this.recipeRating
@@ -62,18 +64,13 @@ export class FormService {
     return this.apiService.addRecipe(recipe).pipe(switchMap(() => this.recipeListService.getRecipes()));
   }
 
-  getUserId(): number {
-    console.warn(JSON.parse(localStorage.getItem('user')!).user.id);
-    return JSON.parse(localStorage.getItem('user')!).user.id;
-  }
-
   generateRecipeToPost(rating: number) {
     return {
       name: this.recipe.value!.name,
       description: this.recipe.value!.description,
       rating: rating,
       ingredients: this.recipe.value!.ingredients,
-      authorId: this.getUserId(),
+      authorId: this.userService.getUserId(),
     };
   }
 }

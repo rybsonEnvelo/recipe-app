@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { concatMap, delay } from 'rxjs';
 import { Recipe } from 'src/app/shared/interfaces/Recipe.model';
 import { User } from 'src/app/shared/interfaces/User.model';
+import { AuthObject } from '../interfaces/AuthObject.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,10 @@ export class ApiService {
     return this.httpClient.get<Recipe[]>(`${this.API_URL}/recipes`);
   }
 
+  getRecipesByUserId(id: number) {
+    return this.httpClient.get<Recipe[]>(`${this.API_URL}/recipes?authorId=${id}`);
+  }
+
   addRecipe(recipe: Recipe) {
     return this.httpClient.post<Recipe>(`${this.API_URL}/recipes`, recipe);
   }
@@ -25,6 +30,6 @@ export class ApiService {
   }
 
   loginUser(user: User) {
-    return this.httpClient.post<User>(`${this.API_URL}/login`, user);
+    return this.httpClient.post<AuthObject>(`${this.API_URL}/login`, user);
   }
 }

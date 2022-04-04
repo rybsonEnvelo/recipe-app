@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, take, tap } from 'rxjs';
+import { Role } from 'src/app/shared/enums/Role.enum';
+import { UserService } from 'src/app/shared/services/user.service';
 import { Recipe } from '../../shared/interfaces/Recipe.model';
 import { ApiService } from '../../shared/services/api.service';
 
@@ -13,15 +15,24 @@ export class RecipeListService {
     return this.recipes.asObservable();
   }
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private userService: UserService) {
     this.getRecipes().pipe(take(1)).subscribe();
   }
 
   getRecipes() {
-    return this.apiService.getRecipes().pipe(
-      tap((recipes) => {
-        this.recipes.next(recipes);
-      })
-    );
+    console.log(this.userService.getUserRole());
+
+    if (this.userService.getUserRole() === Role.AUTHOR) {
+      return this.apiService.getRecipes().pipe(
+        tap((recipes) => {
+          this.recipes.next(recipes);
+        })
+      );
+    } else
+      return this.apiService.getRecipesByUserId(this.userService.getUserId()).pipe(
+        tap((recipes) => {
+          this.recipes.next(recipes);
+        })
+      );
   }
 }
