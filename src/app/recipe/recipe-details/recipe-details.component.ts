@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ShareService } from './share.service';
+import { ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { ShareService } from './details.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -9,5 +11,12 @@ import { ShareService } from './share.service';
 export class RecipeDetailsComponent {
   public recipe$ = this.shareService.recipe$;
 
-  constructor(private shareService: ShareService) {}
+  constructor(private shareService: ShareService, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.params['id'];
+    if (id) {
+      this.shareService.getSingleRecipe(id);
+    }
+  }
 }

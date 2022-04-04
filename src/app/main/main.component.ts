@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Role } from '../shared/enums/Role.enum';
+import { ApiService } from '../shared/services/api.service';
 import { UserService } from '../shared/services/user.service';
 
 @Component({
@@ -8,9 +10,7 @@ import { UserService } from '../shared/services/user.service';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
-  constructor(private userService: UserService) {}
+  public isAuthor = this.userService.getUserRoleFormLocalStorage() === Role.AUTHOR;
 
-  isAuthor() {
-    return this.userService.getUserRoleFormLocalStorage() === Role.AUTHOR;
-  }
+  constructor(private userService: UserService) {}
 }

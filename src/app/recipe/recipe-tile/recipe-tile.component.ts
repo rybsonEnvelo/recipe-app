@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Recipe } from '../../shared/interfaces/Recipe.model';
-import { ShareService } from '../recipe-details/share.service';
+import { ShareService } from '../recipe-details/details.service';
 
 @Component({
   selector: 'app-recipe-tile',
@@ -15,6 +15,6 @@ export class RecipeTileComponent {
 
   displayDetails() {
     this.shareService.emitRecipe(this.recipe);
-    this.router.navigate(['main/details']);
+    this.router.navigate(['main/details', this.recipe.id]);
   }
 }

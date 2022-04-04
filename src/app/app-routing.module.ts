@@ -31,6 +31,10 @@ import { Role } from './shared/enums/Role.enum';
             path: 'details',
             component: RecipeDetailsComponent,
           },
+          {
+            path: 'details/:id',
+            component: RecipeDetailsComponent,
+          },
         ],
       },
       {

@@ -17,6 +17,10 @@ export class ApiService {
     return this.httpClient.get<Recipe[]>(`${this.API_URL}/recipes`);
   }
 
+  getRecipeById(id: number) {
+    return this.httpClient.get<Recipe>(`${this.API_URL}/recipes?id=${id}`);
+  }
+
   getRecipesByUserId(id: number) {
     return this.httpClient.get<Recipe[]>(`${this.API_URL}/recipes?authorId=${id}`);
   }

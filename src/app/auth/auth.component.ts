@@ -67,7 +67,6 @@ export class AuthComponent implements OnInit, OnDestroy {
     switch (response.state) {
       case State.LOADING:
         registerButton.classList.add('loading');
-        console.warn('loading');
         break;
       case State.ERROR:
         registerButton.classList.remove('loading');

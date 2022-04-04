@@ -7,13 +7,13 @@ import { User } from '../interfaces/User.model';
   providedIn: 'root',
 })
 export class UserService {
-  constructor() {}
-
   private user = new BehaviorSubject<User | null>(null);
 
   get user$() {
     return this.user.asObservable();
   }
+
+  constructor() {}
 
   emitUser(user: User | null) {
     this.user.next(user);
