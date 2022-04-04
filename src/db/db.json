@@ -46,7 +46,8 @@
           "value": "0.5 łyżeczki"
         }
       ],
-      "rating": 5
+      "rating": 5,
+      "authorId": 1
     },
     {
       "id": 2,
@@ -66,7 +67,8 @@
           "value": "1 łyżeczka"
         }
       ],
-      "rating": 3
+      "rating": 3,
+      "authorId": 1
     },
     {
       "id": 3,
@@ -91,7 +93,8 @@
           "value": "6 plasterków"
         }
       ],
-      "rating": 2
+      "rating": 2,
+      "authorId": 2
     },
     {
       "id": 4,
@@ -116,13 +119,12 @@
           "value": "150g"
         }
       ],
-      "rating": 4
+      "rating": 4,
+      "authorId": 2
     },
     {
       "name": "Nazwa przepisy",
-      "description": [
-        "safdasfasdfdasfasd"
-      ],
+      "description": ["safdasfasdfdasfasd"],
       "rating": 4,
       "ingredients": [
         {
@@ -130,21 +132,8 @@
           "value": "fasdfsadf"
         }
       ],
-      "id": 5
-    },
-    {
-      "name": "safdsf",
-      "description": [
-        "asfadsfadsfdsf"
-      ],
-      "rating": 2,
-      "ingredients": [
-        {
-          "name": "asdfasd",
-          "value": "fadsfa"
-        }
-      ],
-      "id": 6
+      "id": 5,
+      "authorId": 2
     }
   ],
   "users": [
@@ -152,7 +141,13 @@
       "email": "u@p.pl",
       "password": "$2a$10$kzsrXrlIQduvu9S.lROQ.eE71eVHZXOlCOTmnYut5WPLbACAjFZ1S",
       "role": "author",
-      "id": 7
+      "id": 1
+    },
+    {
+      "email": "z@z.pl",
+      "password": "$2a$10$9pWzIXPj17RYeeB.5Gz35.2kxbUeuq/tFKtU1GAZQaNPOsAU.3Sle",
+      "role": "author",
+      "id": 2
     }
   ]
 }

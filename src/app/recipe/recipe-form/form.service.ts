@@ -4,13 +4,14 @@ import { Recipe } from '../../shared/interfaces/Recipe.model';
 import { RecipeListService } from '../recipe-list/recipe-list.service';
 import { ApiService } from '../../shared/services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Ingredient } from 'src/app/shared/interfaces/Ingredient.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormService {
   private recipeRating = new ReplaySubject<number>(1);
-  private recipe = new BehaviorSubject<Recipe | null>(null);
+  private recipe = new BehaviorSubject<{ name: string; description: string[]; ingredients: Ingredient[] } | null>(null);
   private isReady = new BehaviorSubject<boolean>(false);
 
   get isReady$() {
@@ -45,7 +46,7 @@ export class FormService {
     });
   }
 
-  emitRecipe(emitedRecipe: Recipe) {
+  emitRecipe(emitedRecipe: { name: string; description: string[]; ingredients: Ingredient[] }) {
     this.recipe.next(emitedRecipe);
   }
 
@@ -61,12 +62,18 @@ export class FormService {
     return this.apiService.addRecipe(recipe).pipe(switchMap(() => this.recipeListService.getRecipes()));
   }
 
+  getUserId(): number {
+    console.warn(JSON.parse(localStorage.getItem('user')!).user.id);
+    return JSON.parse(localStorage.getItem('user')!).user.id;
+  }
+
   generateRecipeToPost(rating: number) {
     return {
       name: this.recipe.value!.name,
       description: this.recipe.value!.description,
       rating: rating,
       ingredients: this.recipe.value!.ingredients,
+      authorId: this.getUserId(),
     };
   }
 }
