@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, Subject, switchMap, tap } from 'rxjs';
-import { Recipe } from '../shared/interfaces/Recipe';
+import { Recipe } from '../../shared/interfaces/Recipe.model';
 import { RecipeListService } from '../recipe-list/recipe-list.service';
-import { ApiService } from '../shared/services/api.service';
+import { ApiService } from '../../shared/services/api.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -16,13 +17,32 @@ export class FormService {
     return this.isReady.asObservable();
   }
 
-  constructor(private apiService: ApiService, private recipeListService: RecipeListService) {
+  constructor(
+    private apiService: ApiService,
+    private recipeListService: RecipeListService,
+    private formBuilder: FormBuilder
+  ) {
     this.recipeRating
       .pipe(
         tap(() => this.isReady.next(true)),
         switchMap((recipeRating) => this.addRecipe(this.generateRecipeToPost(recipeRating)))
       )
       .subscribe();
+  }
+
+  createForm(): FormGroup {
+    return this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      description: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(1600)]],
+      ingredients: this.formBuilder.array([this.ingredientFormGroup()]),
+    });
+  }
+
+  ingredientFormGroup(): FormGroup {
+    return this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      value: ['', [Validators.required]],
+    });
   }
 
   emitRecipe(emitedRecipe: Recipe) {

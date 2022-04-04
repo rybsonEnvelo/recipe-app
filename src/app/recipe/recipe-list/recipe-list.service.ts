@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, take, tap } from 'rxjs';
-import { Recipe } from '../shared/interfaces/Recipe';
-import { ApiService } from '../shared/services/api.service';
+import { Recipe } from '../../shared/interfaces/Recipe.model';
+import { ApiService } from '../../shared/services/api.service';
 
 @Injectable({
   providedIn: 'root',

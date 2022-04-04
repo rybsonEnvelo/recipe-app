@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SortOption } from '../shared/interfaces/SortOption';
+import { SortOption } from '../../shared/interfaces/SortOption.model';
 
 @Injectable({
   providedIn: 'root',

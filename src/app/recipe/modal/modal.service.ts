@@ -7,9 +7,9 @@ import { ModalComponent } from './modal.component';
   providedIn: 'root',
 })
 export class ModalService {
+  public viewContainerRef?: ViewContainerRef;
   private componentRef!: ComponentRef<ModalComponent>;
   private componentSubscriber = new Subject<string>();
-  public viewContainerRef?: ViewContainerRef;
 
   set formRef(vcr: ViewContainerRef) {
     this.viewContainerRef = vcr;

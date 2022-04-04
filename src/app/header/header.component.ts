@@ -7,7 +7,7 @@ import { AuthService } from '../shared/services/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  isLogged = false;
+  public isLogged = false;
 
   constructor(private authService: AuthService) {}
 

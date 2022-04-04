@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, delay, Subject, take, tap } from 'rxjs';
-import { User } from 'src/app/shared/interfaces/User';
-import { State } from '../enums/State';
-import { AuthResponse } from '../interfaces/AuthResponse';
+import { User } from 'src/app/shared/interfaces/User.model';
+import { State } from '../enums/State.enum';
+import { AuthResponse } from '../interfaces/AuthResponse.model';
 import { ApiService } from './api.service';
 
 @Injectable({

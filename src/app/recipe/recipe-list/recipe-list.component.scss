@@ -1,5 +1,5 @@
-@use "../../sass/variables.scss" as *;
-@use "../../sass/mixins.scss" as *;
+@use "../../../sass/variables.scss" as *;
+@use "../../../sass/mixins.scss" as *;
 
 :host {
   @include flex(column, 2rem, unset, unset);

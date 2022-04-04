@@ -120,7 +120,9 @@
     },
     {
       "name": "Nazwa przepisy",
-      "description": ["safdasfasdfdasfasd"],
+      "description": [
+        "safdasfasdfdasfasd"
+      ],
       "rating": 4,
       "ingredients": [
         {
@@ -129,6 +131,20 @@
         }
       ],
       "id": 5
+    },
+    {
+      "name": "safdsf",
+      "description": [
+        "asfadsfadsfdsf"
+      ],
+      "rating": 2,
+      "ingredients": [
+        {
+          "name": "asdfasd",
+          "value": "fadsfa"
+        }
+      ],
+      "id": 6
     }
   ],
   "users": [

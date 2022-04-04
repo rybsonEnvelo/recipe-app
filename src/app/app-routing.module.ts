@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AuthGuard } from './login/auth.guard';
-import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthComponent } from './auth/auth.component';
 import { MainComponent } from './main/main.component';
 
 @NgModule({
@@ -10,7 +10,7 @@ import { MainComponent } from './main/main.component';
     RouterModule.forRoot([
       {
         path: 'auth',
-        component: LoginComponent,
+        component: AuthComponent,
       },
       {
         path: 'main',
