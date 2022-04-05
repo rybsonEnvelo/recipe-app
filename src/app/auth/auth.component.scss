@@ -51,4 +51,12 @@ form {
       visibility: visible;
     }
   }
+
+  .checkbox-container {
+    @include flex(row, 1rem, center, center);
+
+    label {
+      font-size: $font-size--xxs;
+    }
+  }
 }

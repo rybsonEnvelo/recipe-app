@@ -27,6 +27,11 @@
     <p *ngIf="successMsg" class="msg--success">{{ successMsg }}</p>
   </div>
 
+  <div class="checkbox-container">
+    <input formControlName="isAdmin" type="checkbox" id="checkbox" />
+    <label for="checkbox">Zarejestruj jako autor</label>
+  </div>
+
   <div>
     <button #loginButton type="submit" [disabled]="!loginForm.valid" class="button--success">
       <img src="../../assets/loader.svg" alt="Logowanie" />
