@@ -124,9 +124,7 @@
     },
     {
       "name": "Nazwa przepisy",
-      "description": [
-        "safdasfasdfdasfasd"
-      ],
+      "description": ["safdasfasdfdasfasd"],
       "rating": 4,
       "ingredients": [
         {
@@ -139,9 +137,7 @@
     },
     {
       "name": "euklali",
-      "description": [
-        "123123213"
-      ],
+      "description": ["123123213"],
       "rating": 1,
       "ingredients": [
         {
@@ -165,18 +161,6 @@
       "password": "$2a$10$9pWzIXPj17RYeeB.5Gz35.2kxbUeuq/tFKtU1GAZQaNPOsAU.3Sle",
       "role": "user",
       "id": 2
-    },
-    {
-      "email": "ed@asd.pl",
-      "password": "$2a$10$Csd6U8s8XPtzt3CoV6gIY.V8xgjjr9a1UIGOD9pd3Zr4JpvYuVNmq",
-      "role": "user",
-      "id": 3
-    },
-    {
-      "email": "ed@asd.pls",
-      "password": "$2a$10$4kHUi26Aytt.9aXWTKf7tOAlPGnxRBR49TSIGKNTDmCE9JTSgRKB.",
-      "role": "author",
-      "id": 4
     }
   ]
 }

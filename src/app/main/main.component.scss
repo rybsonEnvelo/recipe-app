@@ -3,10 +3,10 @@
 
 :host {
   height: 90vh;
-  @include flex(row, 2.5rem, flex-start, unset);
-  padding-top: 2rem;
+  @include flex(row, 2rem, flex-start, unset);
   background-color: $color-background--dark;
   overflow: hidden;
+  padding: 2rem 2.5rem;
 
   & > * {
     flex: 1;
@@ -15,7 +15,7 @@
 
 .container {
   max-height: 100%;
-  padding: 0rem 2.5rem 2rem 0;
+  @include flex(column, 0, unset, unset);
 
   .buttons-container {
     padding: 2rem;
