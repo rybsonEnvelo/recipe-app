@@ -3,7 +3,7 @@
 <div class="container">
   <div *ngIf="isAuthor" class="buttons-container">
     <button routerLink="form" class="button--primary">Dodaj przepis</button>
-    <button routerLink="details" class="button--primary">Szczegóły</button>
+    <button routerLink="details/{{ currentRecipeId }}" class="button--primary">Szczegóły</button>
   </div>
   <router-outlet></router-outlet>
 </div>

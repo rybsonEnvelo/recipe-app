@@ -13,7 +13,9 @@ export class UserService {
     return this.user.asObservable();
   }
 
-  constructor() {}
+  constructor() {
+    this.emitUser(this.getUserFormLocalStorage());
+  }
 
   emitUser(user: User | null) {
     this.user.next(user);

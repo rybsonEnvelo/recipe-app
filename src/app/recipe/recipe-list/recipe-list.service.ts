@@ -4,6 +4,7 @@ import { Role } from 'src/app/shared/enums/Role.enum';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Recipe } from '../../shared/interfaces/Recipe.model';
 import { ApiService } from '../../shared/services/api.service';
+import { ShareService } from '../recipe-details/details.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class RecipeListService {
     return this.recipes.asObservable();
   }
 
-  constructor(private apiService: ApiService, private userService: UserService) {
+  constructor(private apiService: ApiService, private userService: UserService, private detailsService: ShareService) {
     this.getRecipes().pipe(take(1)).subscribe();
   }
 
@@ -26,11 +27,12 @@ export class RecipeListService {
           this.recipes.next(recipes);
         })
       );
-    } else
-      return this.apiService.getRecipes().pipe(
-        tap((recipes) => {
-          this.recipes.next(recipes);
-        })
-      );
+    }
+
+    return this.apiService.getRecipes().pipe(
+      tap((recipes) => {
+        this.recipes.next(recipes);
+      })
+    );
   }
 }

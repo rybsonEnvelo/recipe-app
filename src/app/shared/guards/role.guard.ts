@@ -14,7 +14,6 @@ export class RoleGuard implements CanActivate {
     const canActivateRoles = route.data['roles'] as Role[];
 
     return this.userService.user$.pipe(
-      tap(console.warn),
       map((user) => canActivateRoles.includes(user?.role!!)),
       tap((canActivate) => {
         if (canActivate) {

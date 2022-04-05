@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ShareService } from '../recipe/recipe-details/details.service';
 import { Role } from '../shared/enums/Role.enum';
-import { ApiService } from '../shared/services/api.service';
 import { UserService } from '../shared/services/user.service';
 
 @Component({
@@ -9,8 +8,15 @@ import { UserService } from '../shared/services/user.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
+  public currentRecipeId!: number;
   public isAuthor = this.userService.getUserRoleFormLocalStorage() === Role.AUTHOR;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private shareService: ShareService) {}
+
+  ngOnInit(): void {
+    this.shareService.recipe$.subscribe((recipe) => {
+      this.currentRecipeId = recipe.id!;
+    });
+  }
 }

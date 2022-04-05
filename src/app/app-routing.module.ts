@@ -28,10 +28,6 @@ import { Role } from './shared/enums/Role.enum';
             data: { roles: [Role.AUTHOR] },
           },
           {
-            path: 'details',
-            component: RecipeDetailsComponent,
-          },
-          {
             path: 'details/:id',
             component: RecipeDetailsComponent,
           },
