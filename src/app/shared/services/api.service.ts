@@ -40,6 +40,10 @@ export class ApiService implements OnDestroy {
     return this.httpClient.post<Recipe>(`${this.API_URL}/recipes`, recipe);
   }
 
+  removeRecipe(id: number) {
+    return this.httpClient.delete(`${this.API_URL}/recipes/${id}`);
+  }
+
   registerUser(user: User) {
     return this.httpClient.post<User>(`${this.API_URL}/register`, user);
   }

@@ -6,7 +6,7 @@ import { ApiService } from 'src/app/shared/services/api.service';
 @Injectable({
   providedIn: 'root',
 })
-export class ShareService {
+export class DetailsService {
   private recipe = new Subject<Recipe>();
 
   get recipe$() {

@@ -123,19 +123,6 @@
       "authorId": 2
     },
     {
-      "name": "Nazwa przepisy",
-      "description": ["safdasfasdfdasfasd"],
-      "rating": 4,
-      "ingredients": [
-        {
-          "name": "sdfadsfdsa",
-          "value": "fasdfsadf"
-        }
-      ],
-      "id": 5,
-      "authorId": 2
-    },
-    {
       "name": "euklali",
       "description": ["123123213"],
       "rating": 1,

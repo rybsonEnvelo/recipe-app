@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject, take, tap } from 'rxjs';
 import { Role } from 'src/app/shared/enums/Role.enum';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -15,7 +16,7 @@ export class RecipeListService {
     return this.recipes.asObservable();
   }
 
-  constructor(private apiService: ApiService, private userService: UserService) {
+  constructor(private apiService: ApiService, private userService: UserService, private router: Router) {
     this.getRecipes().pipe(take(1)).subscribe();
   }
 
@@ -38,7 +39,7 @@ export class RecipeListService {
   filterRecipe(sortOption: string) {
     const [type, order] = sortOption.split(',');
 
-    if (type === 'null') return;
+    if (type === 'null') return this.getRecipes().pipe(take(1)).subscribe();
 
     if (this.userService.getUserRoleFormLocalStorage() === Role.AUTHOR) {
       return this.apiService
@@ -47,6 +48,7 @@ export class RecipeListService {
           tap((e) => e.forEach((x) => console.warn(x))),
           tap((recipes) => this.recipes.next(recipes))
         )
+        .pipe(take(1))
         .subscribe();
     }
 
@@ -56,6 +58,23 @@ export class RecipeListService {
         tap((e) => e.forEach((x) => console.warn(x))),
         tap((recipes) => this.recipes.next(recipes))
       )
+      .pipe(take(1))
       .subscribe();
   }
+
+  removeRecipe(id: number) {
+    return this.apiService
+      .removeRecipe(id)
+      .pipe(take(1))
+      .subscribe({
+        next: () => {
+          this.router.navigate(['main']);
+          this.getRecipes().pipe(take(1)).subscribe(); // Pytanie
+        },
+      });
+  }
 }
+
+// w tym momencie pobieram jeszcze raz wszystkie przepisy, czy to dobry pomysł?
+// czy lepszym byłoby nadpisanie istniejącej listy z usuniętym jednym elementem.
+// Jeśli jak to w jaki sposób to zrobić?

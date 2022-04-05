@@ -1,92 +1,90 @@
-<ng-container>
-  <section class="container">
-    <h2>Nowy przepis</h2>
+<section class="container">
+  <h2>Nowy przepis</h2>
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="input-container">
-        <input appTrimInput formControlName="name" type="text" placeholder="Nazwa przepisu" />
-        <p *ngIf="form.controls['name'].dirty && form.controls['name'].errors?.['required']" class="msg--error">
-          Nazwa wymagana
-        </p>
-        <p *ngIf="form.controls['name'].dirty && form.controls['name'].errors?.['minlength']" class="msg--error">
-          Minimum 3 znaki
-        </p>
-      </div>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-container">
+      <input appTrimInput formControlName="name" type="text" placeholder="Nazwa przepisu" />
+      <p *ngIf="form.controls['name'].dirty && form.controls['name'].errors?.['required']" class="msg--error">
+        Nazwa wymagana
+      </p>
+      <p *ngIf="form.controls['name'].dirty && form.controls['name'].errors?.['minlength']" class="msg--error">
+        Minimum 3 znaki
+      </p>
+    </div>
 
-      <div class="input-container">
-        <textarea
-          appTrimInput
-          formControlName="description"
-          placeholder="Szczegóły przygotowania. Każdy krok powinien być oddzielony klawiszem ENTER."
-        ></textarea>
-        <p
-          *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['required']"
-          class="msg--error"
-        >
-          Szczegóły wymagane
-        </p>
-        <p
-          *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['minlength']"
-          class="msg--error"
-        >
-          Minimum 8 znaków
-        </p>
-        <p
-          *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['maxlength']"
-          class="msg--error"
-        >
-          Maksymalnie 1600 znaków
-        </p>
-      </div>
+    <div class="input-container">
+      <textarea
+        appTrimInput
+        formControlName="description"
+        placeholder="Szczegóły przygotowania. Każdy krok powinien być oddzielony klawiszem ENTER."
+      ></textarea>
+      <p
+        *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['required']"
+        class="msg--error"
+      >
+        Szczegóły wymagane
+      </p>
+      <p
+        *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['minlength']"
+        class="msg--error"
+      >
+        Minimum 8 znaków
+      </p>
+      <p
+        *ngIf="form.controls['description'].dirty && form.controls['description'].errors?.['maxlength']"
+        class="msg--error"
+      >
+        Maksymalnie 1600 znaków
+      </p>
+    </div>
 
-      <div class="ingredients-container" formArrayName="ingredients">
-        <div class="ingredient-inputs-container" *ngFor="let ing of ingredients.controls; let i = index">
-          <div class="ingredients-group" [formGroupName]="i">
-            <div class="input-container">
-              <input appTrimInput formControlName="name" type="text" placeholder="Nazwa składnika" />
-              <p
-                *ngIf="ingredients.controls[i].get('name')!.dirty
+    <div class="ingredients-container" formArrayName="ingredients">
+      <div class="ingredient-inputs-container" *ngFor="let ing of ingredients.controls; let i = index">
+        <div class="ingredients-group" [formGroupName]="i">
+          <div class="input-container">
+            <input appTrimInput formControlName="name" type="text" placeholder="Nazwa składnika" />
+            <p
+              *ngIf="ingredients.controls[i].get('name')!.dirty
               && ingredients.controls[i].get('name')!.errors?.['required']"
-                class="msg--error"
-              >
-                Nazwa wymagana
-              </p>
-              <p
-                *ngIf="ingredients.controls[i].get('name')!.dirty && ingredients.controls[i].get('name')!.errors?.['minlength']"
-                class="msg--error"
-              >
-                Minimum 3 znaki
-              </p>
-            </div>
-
-            <div class="input-container">
-              <input appTrimInput formControlName="value" type="text" placeholder="Ilość" />
-              <p
-                *ngIf="ingredients.controls[i].get('value')!.dirty
-            && ingredients.controls[i].get('value')!.errors?.['required']"
-                class="msg--error"
-              >
-                Ilość wymagana
-              </p>
-            </div>
-
-            <button (click)="removeIngredient(i)" class="btn-remove-ingredient">
-              <ion-icon name="close-circle-outline"></ion-icon>
-            </button>
+              class="msg--error"
+            >
+              Nazwa wymagana
+            </p>
+            <p
+              *ngIf="ingredients.controls[i].get('name')!.dirty && ingredients.controls[i].get('name')!.errors?.['minlength']"
+              class="msg--error"
+            >
+              Minimum 3 znaki
+            </p>
           </div>
+
+          <div class="input-container">
+            <input appTrimInput formControlName="value" type="text" placeholder="Ilość" />
+            <p
+              *ngIf="ingredients.controls[i].get('value')!.dirty
+            && ingredients.controls[i].get('value')!.errors?.['required']"
+              class="msg--error"
+            >
+              Ilość wymagana
+            </p>
+          </div>
+
+          <button (click)="removeIngredient(i)" class="btn-remove-ingredient">
+            <ion-icon name="close-circle-outline"></ion-icon>
+          </button>
         </div>
-        <button (click)="addIngredient()" class="button--primary" type="button">
-          <ion-icon name="add-outline"></ion-icon>
-          <span>Dodaj składnik</span>
-        </button>
       </div>
+      <button (click)="addIngredient()" class="button--primary" type="button">
+        <ion-icon name="add-outline"></ion-icon>
+        <span>Dodaj składnik</span>
+      </button>
+    </div>
 
-      <div class="buttons-container">
-        <button type="submit" class="button--success" [disabled]="!form.valid">Zapisz</button>
-        <button type="button" class="button--error" (click)="clear()">Odrzuć</button>
-      </div>
-    </form>
-  </section>
+    <div class="buttons-container">
+      <button type="submit" class="button--success" [disabled]="!form.valid">Zapisz</button>
+      <button type="button" class="button--error" (click)="clear()">Odrzuć</button>
+    </div>
+  </form>
+</section>
 
-  <div #modal></div>
-</ng-container>
+<div #modal></div>

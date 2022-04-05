@@ -1,22 +1,27 @@
-<ng-container *ngIf="recipe$ | async as recipe">
-  <section class="container">
-    <h2>{{ recipe.name | firstLetterUpperCase }}</h2>
-    <div class="stars">
-      <ion-icon *ngFor="let star of recipe.rating!! | multiplyStars" name="star"></ion-icon>
-    </div>
+<section *ngIf="recipe$ | async as recipe" class="container">
+  <h2>{{ recipe.name | firstLetterUpperCase }}</h2>
+  <div class="stars">
+    <ion-icon *ngFor="let star of recipe.rating!! | multiplyStars" name="star"></ion-icon>
+  </div>
 
-    <div class="description">
-      <h3>Jak przyżądzić</h3>
-      <ol class="description__list">
-        <li *ngFor="let detail of recipe.description">{{ detail }}</li>
-      </ol>
-    </div>
+  <div class="description">
+    <h3>Jak przyżądzić</h3>
+    <ol class="description__list">
+      <li *ngFor="let detail of recipe.description">{{ detail }}</li>
+    </ol>
+  </div>
 
-    <div class="ingredients">
-      <h3>Składniki</h3>
-      <ul class="ingredients-list">
-        <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.value }}</li>
-      </ul>
-    </div>
-  </section>
-</ng-container>
+  <div class="ingredients">
+    <h3>Składniki</h3>
+    <ul class="ingredients-list">
+      <li *ngFor="let ingredient of recipe.ingredients">{{ ingredient.name }} - {{ ingredient.value }}</li>
+    </ul>
+  </div>
+
+  <ion-icon
+    *ngIf="userRole === 'author'"
+    class="delete-icon"
+    name="trash-outline"
+    (click)="removeRecipe(recipe.id!)"
+  ></ion-icon>
+</section>

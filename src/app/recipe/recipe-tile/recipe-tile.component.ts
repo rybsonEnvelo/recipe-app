@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Recipe } from '../../shared/interfaces/Recipe.model';
-import { ShareService } from '../recipe-details/details.service';
+import { DetailsService } from '../recipe-details/details.service';
 
 @Component({
   selector: 'app-recipe-tile',
@@ -11,7 +11,7 @@ import { ShareService } from '../recipe-details/details.service';
 export class RecipeTileComponent {
   @Input() recipe!: Recipe;
 
-  constructor(private shareService: ShareService, private router: Router) {}
+  constructor(private shareService: DetailsService, private router: Router) {}
 
   displayDetails() {
     this.shareService.emitRecipe(this.recipe);
