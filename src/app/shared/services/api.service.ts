@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Recipe } from 'src/app/shared/interfaces/Recipe.model';
 import { User } from 'src/app/shared/interfaces/User.model';
 import { AuthObject } from '../interfaces/AuthObject.model';
@@ -7,10 +7,14 @@ import { AuthObject } from '../interfaces/AuthObject.model';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
+export class ApiService implements OnDestroy {
   private API_URL: string = 'http://localhost:3000';
 
   constructor(private httpClient: HttpClient) {}
+
+  ngOnDestroy(): void {
+    console.error('destroyed');
+  }
 
   getRecipes() {
     return this.httpClient.get<Recipe[]>(`${this.API_URL}/recipes`);
@@ -22,6 +26,14 @@ export class ApiService {
 
   getRecipesByUserId(id: number) {
     return this.httpClient.get<Recipe[]>(`${this.API_URL}/recipes?authorId=${id}`);
+  }
+
+  getFilteredRecipesByUser(id: number, type: string, order: string) {
+    return this.httpClient.get<Recipe[]>(`${this.API_URL}/recipes?authorId=${id}&_sort=${type}&_order=${order}`);
+  }
+
+  getFilteredRecipes(type: string, order: string) {
+    return this.httpClient.get<Recipe[]>(`${this.API_URL}/recipes?_sort=${type}&_order=${order}`);
   }
 
   addRecipe(recipe: Recipe) {

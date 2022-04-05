@@ -21,11 +21,11 @@ export class SortService {
       },
       {
         label: 'Ocena 0-5',
-        value: 'rate,asc',
+        value: 'rating,asc',
       },
       {
         label: 'Ocena 5-0',
-        value: 'rate,desc',
+        value: 'rating,desc',
       },
     ];
   }

@@ -2,7 +2,7 @@
   "recipes": [
     {
       "id": 1,
-      "name": "placki czekoladowe",
+      "name": "placki",
       "description": [
         "Jogurt i jajka wyjąć wcześniej z lodówki aby się ogrzały (lub delikatnie podgrzać w kąpieli lub mikrofali).",
         "Wymieszać jogurt z jajkami, cukrem wanilinowym i cukrem za pomocą rózgi lub widelcem.",
@@ -46,7 +46,7 @@
           "value": "0.5 łyżeczki"
         }
       ],
-      "rating": 5,
+      "rating": 4,
       "authorId": 1
     },
     {
@@ -67,7 +67,7 @@
           "value": "1 łyżeczka"
         }
       ],
-      "rating": 3,
+      "rating": 5,
       "authorId": 1
     },
     {

@@ -16,13 +16,10 @@ export class ShareService {
   constructor(private apiService: ApiService) {}
 
   emitRecipe(recipe: Recipe) {
-    console.log('TAAAK');
-    console.log(recipe);
     return this.recipe.next(recipe);
   }
 
   getSingleRecipe(id: number) {
-    console.warn('start');
     return this.apiService
       .getRecipeById(id)
       .pipe(tap(console.warn))
