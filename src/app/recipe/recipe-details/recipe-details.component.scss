@@ -1,3 +1,5 @@
+@use "../../../sass/variables.scss" as *;
+
 :host {
   overflow-y: auto;
 }
@@ -8,7 +10,8 @@
   grid-template-rows: auto;
   row-gap: 4rem;
   column-gap: 8rem;
-  padding-right: 0.5rem;
+  padding: 2rem;
+  background-color: $color-background--light;
 
   .stars {
     justify-self: end;

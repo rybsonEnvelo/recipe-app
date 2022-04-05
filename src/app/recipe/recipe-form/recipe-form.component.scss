@@ -10,6 +10,8 @@
   height: 100%;
   @include flex(column, 1.5rem, unset, unset);
   padding-right: 0.5rem;
+  background-color: $color-background--light;
+  padding: 2rem;
 }
 
 form {
