@@ -42,6 +42,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(this.authService.regex)]],
       password: ['', [Validators.required, Validators.minLength(6)]],
+      isAdmin: [false],
     });
   }
 
@@ -54,10 +55,12 @@ export class AuthComponent implements OnInit, OnDestroy {
   onRegister() {
     this.clearErrors();
 
+    const inputRole = this.loginForm!.get('isAdmin')!.value ? Role.AUTHOR : Role.USER;
+
     this.authService.registerUser({
       email: this.loginForm!.get('email')!.value,
       password: this.loginForm!.get('password')!.value,
-      role: Role.AUTHOR,
+      role: inputRole,
     });
   }
 

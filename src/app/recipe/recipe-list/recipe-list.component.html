@@ -9,6 +9,6 @@
   </select>
 </form>
 
-<div class="recipe-list-container">
+<div *ngIf="recipes.length" class="recipe-list-container">
   <app-recipe-tile [recipe]="recipe" *ngFor="let recipe of recipes"></app-recipe-tile>
 </div>
