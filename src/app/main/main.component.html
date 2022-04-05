@@ -1,10 +1,9 @@
 <app-recipe-list></app-recipe-list>
 
 <div class="container">
-  <div class="buttons-container">
-    <button class="button--primary">Dodaj przepis</button>
-    <button class="button--primary">Szczegóły</button>
+  <div *ngIf="isAuthor" class="buttons-container">
+    <button routerLink="form" class="button--primary">Dodaj przepis</button>
+    <button routerLink="details/{{ currentRecipeId }}" class="button--primary">Szczegóły</button>
   </div>
-  <app-recipe-form></app-recipe-form>
-  <app-recipe-details></app-recipe-details>
+  <router-outlet></router-outlet>
 </div>

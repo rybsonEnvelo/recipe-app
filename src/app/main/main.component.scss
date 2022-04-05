@@ -4,7 +4,7 @@
 :host {
   height: 90vh;
   @include flex(row, 2.5rem, flex-start, unset);
-  padding: 2rem 2rem;
+  padding-top: 2rem;
   background-color: $color-background--dark;
   overflow: hidden;
 
@@ -15,13 +15,13 @@
 
 .container {
   max-height: 100%;
-  @include flex(column, 2rem, unset, unset);
-  background-color: $color-background--light;
-  padding: 2rem 2.5rem;
+  padding: 0rem 2.5rem 2rem 0;
 
   .buttons-container {
-    min-height: 3.5rem;
+    padding: 2rem;
     @include flex(row, 0.5rem, unset, unset);
+    background-color: $color-background--light;
+    margin-bottom: 1rem;
 
     button {
       flex: 1;

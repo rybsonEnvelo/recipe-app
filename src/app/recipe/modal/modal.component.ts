@@ -25,7 +25,6 @@ export class ModalComponent implements OnDestroy {
       this.stars.forEach((star) => {
         star.nativeElement.firstChild.classList.add('error');
       });
-
       return;
     }
 

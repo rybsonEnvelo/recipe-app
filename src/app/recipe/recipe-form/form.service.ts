@@ -4,13 +4,15 @@ import { Recipe } from '../../shared/interfaces/Recipe.model';
 import { RecipeListService } from '../recipe-list/recipe-list.service';
 import { ApiService } from '../../shared/services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Ingredient } from 'src/app/shared/interfaces/Ingredient.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FormService {
   private recipeRating = new ReplaySubject<number>(1);
-  private recipe = new BehaviorSubject<Recipe | null>(null);
+  private recipe = new BehaviorSubject<{ name: string; description: string[]; ingredients: Ingredient[] } | null>(null);
   private isReady = new BehaviorSubject<boolean>(false);
 
   get isReady$() {
@@ -20,6 +22,7 @@ export class FormService {
   constructor(
     private apiService: ApiService,
     private recipeListService: RecipeListService,
+    private userService: UserService,
     private formBuilder: FormBuilder
   ) {
     this.recipeRating
@@ -45,7 +48,7 @@ export class FormService {
     });
   }
 
-  emitRecipe(emitedRecipe: Recipe) {
+  emitRecipe(emitedRecipe: { name: string; description: string[]; ingredients: Ingredient[] }) {
     this.recipe.next(emitedRecipe);
   }
 
@@ -67,6 +70,7 @@ export class FormService {
       description: this.recipe.value!.description,
       rating: rating,
       ingredients: this.recipe.value!.ingredients,
+      authorId: this.userService.getUserIdFormLocalStorage(),
     };
   }
 }

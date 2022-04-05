@@ -5,6 +5,7 @@ import { User } from 'src/app/shared/interfaces/User.model';
 import { State } from '../enums/State.enum';
 import { AuthResponse } from '../interfaces/AuthResponse.model';
 import { ApiService } from './api.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,14 +16,9 @@ export class AuthService {
   private registerUserState = new Subject<AuthResponse>();
   private loginUserState = new Subject<AuthResponse>();
   private authorized!: BehaviorSubject<boolean>;
-  private user = new BehaviorSubject<User | null>(null);
 
   get authorized$() {
     return this.authorized.asObservable();
-  }
-
-  get user$() {
-    return this.user.asObservable();
   }
 
   get register$() {
@@ -33,7 +29,7 @@ export class AuthService {
     return this.loginUserState.asObservable();
   }
 
-  constructor(private apiService: ApiService, private router: Router) {
+  constructor(private apiService: ApiService, private userService: UserService, private router: Router) {
     this.authorized = new BehaviorSubject(!!localStorage.getItem('user'));
   }
 
@@ -52,9 +48,9 @@ export class AuthService {
     return this.apiService.loginUser(user).subscribe({
       error: (error) => this.loginUserState.next({ state: State.ERROR, errorCode: error.status }),
       next: (response) => {
-        localStorage.setItem('user', JSON.stringify(response));
+        localStorage.setItem('user', JSON.stringify(response.user));
         this.authorized.next(true);
-        this.user.next(response);
+        this.userService.emitUser(response.user);
         this.loginUserState.next({ state: State.SUCCESS });
         this.router.navigate(['main']);
       },
@@ -63,8 +59,8 @@ export class AuthService {
 
   logOutUser() {
     this.authorized.next(false);
-    this.user.next(null);
-    localStorage.removeItem('user');
+    this.userService.emitUser(null);
+    this.userService.removeUserFromLocalStorage();
     this.router.navigate(['auth']);
   }
 }
