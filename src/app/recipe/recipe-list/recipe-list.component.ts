@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Subscription, tap } from 'rxjs';
+import { debounce, Subscription, tap, timer } from 'rxjs';
 import { Recipe } from '../../shared/interfaces/Recipe.model';
 import { SortOption } from '../../shared/interfaces/SortOption.model';
 import { RecipeListService } from './recipe-list.service';
@@ -27,6 +27,10 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     this.createForm();
     this.listSubscription = this.recipeListService.recipes$.subscribe((result) => (this.recipes = result));
     this.filterForm.get('select')!.valueChanges.subscribe((string) => this.recipeListService.filterRecipe(string));
+    this.filterForm
+      .get('search')!
+      .valueChanges.pipe(debounce(() => timer(300)))
+      .subscribe((input) => this.recipeListService.searchRecipe(input));
   }
 
   ngOnDestroy(): void {

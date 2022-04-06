@@ -36,6 +36,14 @@ export class ApiService implements OnDestroy {
     return this.httpClient.get<Recipe[]>(`${this.API_URL}/recipes?_sort=${type}&_order=${order}`);
   }
 
+  searchRecipeByName(name: string) {
+    return this.httpClient.get<Recipe[]>(`${this.API_URL}/recipes?name_like=${name}`);
+  }
+
+  searchRecipeByNameAndId(id: number, name: string) {
+    return this.httpClient.get<Recipe[]>(`${this.API_URL}/recipes?authorId=${id}&name_like=${name}`);
+  }
+
   addRecipe(recipe: Recipe) {
     return this.httpClient.post<Recipe>(`${this.API_URL}/recipes`, recipe);
   }

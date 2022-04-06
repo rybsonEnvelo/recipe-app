@@ -123,17 +123,30 @@
       "authorId": 2
     },
     {
-      "name": "euklali",
-      "description": ["123123213"],
-      "rating": 1,
+      "id": 4,
+      "name": "kluski z jajecznicą",
+      "description": [
+        "Przygotowujemy garnek wody i solimy go",
+        "Gotujemy wodę",
+        "Gotujemy makaron",
+        "Do ugatowanego makaronu dodajemy jajecznicę"
+      ],
       "ingredients": [
         {
-          "name": "23232",
-          "value": "32323"
+          "name": "makaron",
+          "value": "250g"
+        },
+        {
+          "name": "sól",
+          "value": "szczypta"
+        },
+        {
+          "name": "twaróg",
+          "value": "150g"
         }
       ],
-      "authorId": 1,
-      "id": 6
+      "rating": 4,
+      "authorId": 2
     }
   ],
   "users": [

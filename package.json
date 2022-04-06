@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "server": "json-server --watch src/db/db.json --routes src/db/routes.json  -m ./node_modules/json-server-auth"
+    "server": "json-server --watch src/db/db.json  -m ./node_modules/json-server-auth"
   },
   "private": true,
   "dependencies": {

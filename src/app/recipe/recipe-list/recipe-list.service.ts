@@ -45,20 +45,40 @@ export class RecipeListService {
       return this.apiService
         .getFilteredRecipesByUser(this.userService.getUserIdFormLocalStorage(), type, order)
         .pipe(
-          tap((e) => e.forEach((x) => console.warn(x))),
-          tap((recipes) => this.recipes.next(recipes))
+          tap((recipes) => this.recipes.next(recipes)),
+          take(1)
         )
-        .pipe(take(1))
         .subscribe();
     }
 
     return this.apiService
       .getFilteredRecipes(type, order)
       .pipe(
-        tap((e) => e.forEach((x) => console.warn(x))),
-        tap((recipes) => this.recipes.next(recipes))
+        tap((recipes) => this.recipes.next(recipes)),
+        take(1)
       )
-      .pipe(take(1))
+      .subscribe();
+  }
+
+  searchRecipe(input: string) {
+    if (!input) return this.getRecipes().pipe(take(1)).subscribe();
+
+    if (this.userService.getUserRoleFormLocalStorage() === Role.AUTHOR) {
+      return this.apiService
+        .searchRecipeByNameAndId(this.userService.getUserIdFormLocalStorage(), input)
+        .pipe(
+          tap((recipes) => this.recipes.next(recipes)),
+          take(1)
+        )
+        .subscribe();
+    }
+
+    return this.apiService
+      .searchRecipeByName(input)
+      .pipe(
+        tap((recipes) => this.recipes.next(recipes)),
+        take(1)
+      )
       .subscribe();
   }
 
